@@ -21,11 +21,10 @@
 
 # Visual Studio cache directory
 .vs/
-ArtifactDB/
-Artifacts/
-Bee/
-Logs/
-Temp/
+S4-YourOwnGame/Library/Artifacts/
+S4-YourOwnGame/Library/Bee/
+S4-YourOwnGame/Logs/
+S4-YourOwnGame/Temp/
 
 # Gradle cache directory
 .gradle/
@@ -75,3 +74,4 @@ crashlytics-build.properties
 *.digestcache
 *.traceevents
 EditorInstance.json
+ArtifactDB
