@@ -21,6 +21,11 @@
 
 # Visual Studio cache directory
 .vs/
+.ArtifactDB/
+.Artifacts/
+.Bee/
+.Logs/
+.Temp/
 
 # Gradle cache directory
 .gradle/
@@ -42,9 +47,6 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-*.bin
-*.log
-*.dwlt
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -62,3 +64,14 @@ sysinfo.txt
 crashlytics-build.properties
 
 *.dwlt
+*.log
+*.exe0.log
+*.exe1.log
+*.exe2.log
+*.exe3.log
+*.exe4.log
+*.exe5.log
+*.exe6.log
+*.digestcache
+*.traceevents
+EditorInstance.json
