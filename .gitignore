@@ -21,11 +21,11 @@
 
 # Visual Studio cache directory
 .vs/
-.ArtifactDB/
-.Artifacts/
-.Bee/
-.Logs/
-.Temp/
+ArtifactDB/
+Artifacts/
+Bee/
+Logs/
+Temp/
 
 # Gradle cache directory
 .gradle/
