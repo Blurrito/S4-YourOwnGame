@@ -21,10 +21,10 @@
 
 # Visual Studio cache directory
 .vs/
-S4-YourOwnGame/Library/Artifacts/
-S4-YourOwnGame/Library/Bee/
-S4-YourOwnGame/Logs/
-S4-YourOwnGame/Temp/
+**/Artifacts/
+**/Library/Bee/
+**/Logs/
+**/Temp/
 
 # Gradle cache directory
 .gradle/
