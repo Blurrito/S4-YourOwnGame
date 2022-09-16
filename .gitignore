@@ -23,6 +23,7 @@
 .vs/
 **/Artifacts/
 **/Library/Bee/
+**/Library/StateCache/
 **/Logs/
 **/Temp/
 
