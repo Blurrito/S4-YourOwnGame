@@ -1,3 +1,0 @@
-D:/Documents/School/2022-2023/Najaar 2022/S4-YourOwnGame/S4-YourOwnGame/Library/PackageCache/com.unity.ide.visualstudio@2.0.16/Editor/COMIntegration/COMIntegration~/out/build/x64-Debug/CMakeFiles/COMIntegration.dir
-D:/Documents/School/2022-2023/Najaar 2022/S4-YourOwnGame/S4-YourOwnGame/Library/PackageCache/com.unity.ide.visualstudio@2.0.16/Editor/COMIntegration/COMIntegration~/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-D:/Documents/School/2022-2023/Najaar 2022/S4-YourOwnGame/S4-YourOwnGame/Library/PackageCache/com.unity.ide.visualstudio@2.0.16/Editor/COMIntegration/COMIntegration~/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
