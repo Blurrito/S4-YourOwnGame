@@ -89,3 +89,4 @@ crashlytics-build.properties
 *.traceevents
 EditorInstance.json
 ArtifactDB
+S4-YourOwnGame/ProjectSettings/Packages/com.unity.probuilder/Settings.json
