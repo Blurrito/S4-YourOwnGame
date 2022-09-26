@@ -14,6 +14,8 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+        public bool _isRecordingAnimations = false;
+
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -188,6 +190,10 @@ namespace StarterAssets
             {
                 _animator.SetBool(_animIDGrounded, Grounded);
             }
+            if (_isRecordingAnimations)
+            {
+                CloneRecordingCreator.instance.AddAnimationRecord(new AnimationRecord(_animIDGrounded, Grounded));
+            }
         }
 
         private void CameraRotation()
@@ -277,6 +283,11 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
+            if (_isRecordingAnimations)
+            {
+                CloneRecordingCreator.instance.AddAnimationRecord(new AnimationRecord(_animIDSpeed, _animationBlend));
+                CloneRecordingCreator.instance.AddAnimationRecord(new AnimationRecord(_animIDMotionSpeed, inputMagnitude));
+            }
         }
 
         private void JumpAndGravity()
@@ -291,6 +302,11 @@ namespace StarterAssets
                 {
                     _animator.SetBool(_animIDJump, false);
                     _animator.SetBool(_animIDFreeFall, false);
+                }
+                if (_isRecordingAnimations)
+                {
+                    CloneRecordingCreator.instance.AddAnimationRecord(new AnimationRecord(_animIDJump, false));
+                    CloneRecordingCreator.instance.AddAnimationRecord(new AnimationRecord(_animIDFreeFall, false));
                 }
 
                 // stop our velocity dropping infinitely when grounded
@@ -309,6 +325,10 @@ namespace StarterAssets
                     if (_hasAnimator)
                     {
                         _animator.SetBool(_animIDJump, true);
+                    }
+                    if (_isRecordingAnimations)
+                    {
+                        CloneRecordingCreator.instance.AddAnimationRecord(new AnimationRecord(_animIDJump, true));
                     }
                 }
 
@@ -334,6 +354,10 @@ namespace StarterAssets
                     if (_hasAnimator)
                     {
                         _animator.SetBool(_animIDFreeFall, true);
+                    }
+                    if (_isRecordingAnimations)
+                    {
+                        CloneRecordingCreator.instance.AddAnimationRecord(new AnimationRecord(_animIDFreeFall, true));
                     }
                 }
 
