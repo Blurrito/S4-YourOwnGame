@@ -24,7 +24,7 @@ public class CloneRecordingPlayer : MonoBehaviour
             {
                 animator.SetFloat(ar.name, ar.numState);
             }
-        }
+        } 
 
         records.RemoveAt(0);
 
