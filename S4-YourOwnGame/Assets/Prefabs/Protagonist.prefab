@@ -2281,6 +2281,8 @@ GameObject:
   - component: {fileID: 4910947767903304198}
   - component: {fileID: 8685596317147817590}
   - component: {fileID: 1735076075}
+  - component: {fileID: 844794028}
+  - component: {fileID: 844794027}
   m_Layer: 8
   m_Name: Protagonist
   m_TagString: Player
@@ -2538,6 +2540,36 @@ MonoBehaviour:
   protagonist: {fileID: 8341439988683586752}
   clonePhysicalPrefab: {fileID: 2801137172152826827, guid: da0d5e3097ea25f42987ed998b91e34a, type: 3}
   cloneEnvisionPrefab: {fileID: 2193045994511427278, guid: 0c0b494af696f134a9c922a4fe565f28, type: 3}
+--- !u!54 &844794028
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685596317147817594}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!136 &844794027
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685596317147817594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8756510232682986665
 GameObject:
   m_ObjectHideFlags: 0
