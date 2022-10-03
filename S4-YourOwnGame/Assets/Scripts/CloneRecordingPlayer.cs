@@ -7,6 +7,12 @@ public class CloneRecordingPlayer : MonoBehaviour
     public List<TransformRecord> records = new List<TransformRecord>();
     [SerializeField] Animator animator;
 
+    [SerializeField] AudioClip[] footstepSounds;
+    [SerializeField] AudioClip onLandSound;
+
+    [SerializeField, Range(0, 1), ] float footstepAudioVolume;
+
+
     void FixedUpdate()
     {
         if (records.Count == 0) return;
@@ -38,25 +44,25 @@ public class CloneRecordingPlayer : MonoBehaviour
     {
         Debug.Log("Clone OnFootstep sound");
 
-        /*
+        
         if (animationEvent.animatorClipInfo.weight > 0.5f)
         {
-            if (FootstepAudioClips.Length > 0)
+            if (footstepSounds.Length > 0)
             {
-                var index = Random.Range(0, FootstepAudioClips.Length);
-                AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                var index = Random.Range(0, footstepSounds.Length);
+                AudioSource.PlayClipAtPoint(footstepSounds[index], transform.position, footstepAudioVolume);
             }
-        }*/
+        }
     }
 
     private void OnLand(AnimationEvent animationEvent)
     {
         Debug.Log("Clone Onland sound");
 
-        /*
+        
         if (animationEvent.animatorClipInfo.weight > 0.5f)
         {
-            AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
-        }*/
+            AudioSource.PlayClipAtPoint(onLandSound, transform.position, footstepAudioVolume);
+        }
     }
 }
