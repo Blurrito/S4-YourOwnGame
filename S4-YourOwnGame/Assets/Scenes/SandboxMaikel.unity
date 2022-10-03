@@ -13256,7 +13256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1260593155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13352,7 +13352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recordTimeBackground: {fileID: 1572420002}
-  recordTimeText: {fileID: 922666382}
+  recordTimeText: {fileID: 922666384}
 --- !u!43 &1385060140
 Mesh:
   m_ObjectHideFlags: 0

@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clone: {fileID: 1523504317800266868}
-  maxRecordingTime: 10
+  RecordingTimeLeft: 10
 --- !u!1 &2261778753046674461
 GameObject:
   m_ObjectHideFlags: 0

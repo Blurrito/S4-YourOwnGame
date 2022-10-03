@@ -42,9 +42,6 @@ public class CloneRecordingPlayer : MonoBehaviour
 
     private void OnFootstep(AnimationEvent animationEvent)
     {
-        Debug.Log("Clone OnFootstep sound");
-
-        
         if (animationEvent.animatorClipInfo.weight > 0.5f)
         {
             if (footstepSounds.Length > 0)
@@ -57,9 +54,6 @@ public class CloneRecordingPlayer : MonoBehaviour
 
     private void OnLand(AnimationEvent animationEvent)
     {
-        Debug.Log("Clone Onland sound");
-
-        
         if (animationEvent.animatorClipInfo.weight > 0.5f)
         {
             AudioSource.PlayClipAtPoint(onLandSound, transform.position, footstepAudioVolume);
