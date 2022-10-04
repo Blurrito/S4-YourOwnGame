@@ -18,6 +18,8 @@ public class CloneManager : MonoBehaviour
 
     void OnStartRecord()
     {
+        if (FindObjectOfType<CloneRecordingPlayer>()) return;
+
         protagonist.GetComponent<PlayerInput>().enabled = false;
         protagonist.gameObject.SetActive(false);
         Instantiate(cloneEnvisionPrefab, protagonist.position, protagonist.rotation);
