@@ -1,5 +1,5 @@
 {
-    "name": "StarterAssets",
+    "name": "InputSystem",
     "maps": [
         {
             "name": "Player",
@@ -45,6 +45,15 @@
                     "name": "StartRecord",
                     "type": "Button",
                     "id": "75e6c848-8f38-4d07-884c-3d528a1948be",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CancelRecord",
+                    "type": "Button",
+                    "id": "703ee1f3-7ad7-4ecc-a1f7-8e26db7a57ef",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -236,6 +245,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "StartRecord",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c5032e8-c3f6-4b4a-a729-8925d57a05b9",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "CancelRecord",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

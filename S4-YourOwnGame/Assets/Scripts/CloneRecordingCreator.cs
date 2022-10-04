@@ -15,6 +15,7 @@ public class CloneRecordingCreator : MonoBehaviour
 
     void OnEnable()
     {
+        StateManager.instance.SaveAllStates();
         instance = this;
         records = new List<TransformRecord>();
         Invoke(nameof(DecreaseTimer), 1);
@@ -53,5 +54,12 @@ public class CloneRecordingCreator : MonoBehaviour
         if (records.Count == 0) return;
 
         records[^1].animationRecords.Add(animationRecord);
+    }
+
+    public void CancelRecording()
+    {
+        HudManager.instance.ActivateTimer(false);
+        StateManager.instance.LoadAllStates();
+        Destroy(gameObject);
     }
 }

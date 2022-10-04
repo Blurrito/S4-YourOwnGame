@@ -75,6 +75,14 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
+
+		public void OnCancelRecord()
+        {
+			if (CloneRecordingCreator.instance == null) return;
+
+			CloneRecordingCreator.instance.CancelRecording();
+			CloneManager.instance.ReturnControlToPlayer();
+        }
 	}
 	
 }

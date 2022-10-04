@@ -27,9 +27,7 @@ public class CloneManager : MonoBehaviour
 
     public void PlayRecording(List<TransformRecord> records)
     {
-        protagonist.gameObject.SetActive(true);
-        protagonist.GetComponent<PlayerInput>().enabled = false;
-        Invoke(nameof(FixInput), 0.01f);
+        ReturnControlToPlayer();
 
         GameObject replayingClone = Instantiate(clonePhysicalPrefab, protagonist.position, protagonist.rotation);
         replayingClone.GetComponent<CloneRecordingPlayer>().records = records;
@@ -38,5 +36,12 @@ public class CloneManager : MonoBehaviour
     private void FixInput()
     {
         protagonist.GetComponent<PlayerInput>().enabled = true;
+    }
+
+    public void ReturnControlToPlayer()
+    {
+        protagonist.gameObject.SetActive(true);
+        protagonist.GetComponent<PlayerInput>().enabled = false;
+        Invoke(nameof(FixInput), 0.01f);
     }
 }
