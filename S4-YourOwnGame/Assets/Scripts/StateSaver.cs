@@ -2,33 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class StateSaver : MonoBehaviour
 {
     [SerializeField] List<Component> componentsToSave;
-    StateStore stateStore = new();
+    List<StateStore> stateStores = new();
 
-    //called on recording creator start
-    [ContextMenu("Save state")]
-    public void SaveState()
+    private StateStore GetStateStore(ObjectStateStamp stateStamp)
     {
-        foreach (Component item in componentsToSave)
+        StateStore ss = stateStores.SingleOrDefault(x => x.stateStamp == stateStamp);
+        if (ss == null)
         {
-            SaveComponent(item);
+            return new StateStore(stateStamp);
+        }
+        else
+        {
+            return ss;
         }
     }
 
-    //called on cancel/retry recording
-    [ContextMenu("Load state")]
-    public void LoadState()
+    //references in StateManager.SaveAllStates
+    public void SaveState(ObjectStateStamp stateStamp)
     {
+        StateStore stateStore = GetStateStore(stateStamp);
+
         foreach (Component item in componentsToSave)
         {
-            LoadComponent(item);
+            SaveComponent(item, stateStore);
         }
     }
 
-    private void SaveComponent(Component component)
+    //references in StateManager.LoadAllStates
+    public void LoadState(ObjectStateStamp stateStamp)
+    {
+        StateStore stateStore = GetStateStore(stateStamp);
+
+        foreach (Component item in componentsToSave)
+        {
+            LoadComponent(item, stateStore);
+        }
+    }
+
+    private void SaveComponent(Component component, StateStore stateStore)
     {
         Type t = component.GetType();
 
@@ -65,7 +81,7 @@ public class StateSaver : MonoBehaviour
         }
     }
 
-    private void LoadComponent(Component component)
+    private void LoadComponent(Component component, StateStore stateStore)
     {
         Type t = component.GetType();
 

@@ -11,15 +11,19 @@ public class StateManager : MonoBehaviour
         instance = this;
     }
 
-    [ContextMenu("Save all states")]
-    public void SaveAllStates()
+    public void SaveAllStates(ObjectStateStamp stateStamp)
     {
-        BroadcastMessage("SaveState");
+        BroadcastMessage("SaveState", stateStamp);
     }
 
-    [ContextMenu("Load all states")]
-    public void LoadAllStates()
+    public void LoadAllStates(ObjectStateStamp stateStamp)
     {
-        BroadcastMessage("LoadState");
+        BroadcastMessage("LoadState", stateStamp);
     }
+}
+
+public enum ObjectStateStamp
+{
+    checkpoint,
+    recording
 }

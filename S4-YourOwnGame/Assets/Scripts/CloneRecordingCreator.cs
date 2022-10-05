@@ -15,7 +15,7 @@ public class CloneRecordingCreator : MonoBehaviour
 
     void OnEnable()
     {
-        StateManager.instance.SaveAllStates();
+        StateManager.instance.SaveAllStates(ObjectStateStamp.recording);
         instance = this;
         records = new List<TransformRecord>();
         Invoke(nameof(DecreaseTimer), 1);
@@ -32,7 +32,7 @@ public class CloneRecordingCreator : MonoBehaviour
     {
         if (RecordingTimeLeft <= 0)
         {
-            StopRecording();
+            StopAndPlayRecording();
         }
         else
         {
@@ -42,8 +42,10 @@ public class CloneRecordingCreator : MonoBehaviour
         }
     }
 
-    void StopRecording()
+    void StopAndPlayRecording()
     {
+        CloneManager.instance.SaveRecording(records);
+
         HudManager.instance.ActivateTimer(false);
         CloneManager.instance.PlayRecording(records);
         Destroy(gameObject);
@@ -59,7 +61,7 @@ public class CloneRecordingCreator : MonoBehaviour
     public void CancelRecording()
     {
         HudManager.instance.ActivateTimer(false);
-        StateManager.instance.LoadAllStates();
+        StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
         Destroy(gameObject);
     }
 }

@@ -5,8 +5,15 @@ using System;
 
 public class StateStore
 {
+    public ObjectStateStamp stateStamp;
+
     public AnimatorStore animator;
     public TransformStore transform;
+
+    public StateStore(ObjectStateStamp stateStamp)
+    {
+        this.stateStamp = stateStamp;
+    }
 }
 
 public record AnimatorStore 

@@ -11,6 +11,8 @@ public class CloneManager : MonoBehaviour
 
     public static CloneManager instance;
 
+    private List<TransformRecord> previousCloneRecording;
+
     private void Start()
     {
         instance = this;
@@ -27,6 +29,8 @@ public class CloneManager : MonoBehaviour
 
     public void PlayRecording(List<TransformRecord> records)
     {
+        StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
+
         ReturnControlToPlayer();
 
         GameObject replayingClone = Instantiate(clonePhysicalPrefab, protagonist.position, protagonist.rotation);
@@ -43,5 +47,10 @@ public class CloneManager : MonoBehaviour
         protagonist.gameObject.SetActive(true);
         protagonist.GetComponent<PlayerInput>().enabled = false;
         Invoke(nameof(FixInput), 0.01f);
+    }
+
+    public void SaveRecording(List<TransformRecord> recording)
+    {
+        previousCloneRecording = recording;
     }
 }
