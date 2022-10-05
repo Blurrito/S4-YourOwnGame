@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 7414662642322309303}
   - component: {fileID: 6465708889147976244}
   - component: {fileID: 6900375203585027684}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: CloneEnvision
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clone: {fileID: 1523504317800266868}
-  RecordingTimeLeft: 10
+  RecordingTimeLeft: 5
 --- !u!54 &6465708889147976244
 Rigidbody:
   m_ObjectHideFlags: 0

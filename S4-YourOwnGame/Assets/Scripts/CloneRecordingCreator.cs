@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using StarterAssets;
 using System;
+using System.Linq;
 
 public class CloneRecordingCreator : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class CloneRecordingCreator : MonoBehaviour
 
     private void DecreaseTimer()
     {
-        if (RecordingTimeLeft <= 0)
+        if (RecordingTimeLeft == 0)
         {
             StopAndPlayRecording();
         }
@@ -44,7 +45,7 @@ public class CloneRecordingCreator : MonoBehaviour
 
     void StopAndPlayRecording()
     {
-        CloneManager.instance.SaveRecording(records);
+        CloneManager.instance.SaveRecording(records.ToList());
 
         HudManager.instance.ActivateTimer(false);
         CloneManager.instance.PlayRecording(records);

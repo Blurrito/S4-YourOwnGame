@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class CloneManager : MonoBehaviour
 {
@@ -31,7 +32,9 @@ public class CloneManager : MonoBehaviour
     {
         StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
 
+        transform.SetPositionAndRotation(records[0].position, records[0].rotation);
         ReturnControlToPlayer();
+        
 
         GameObject replayingClone = Instantiate(clonePhysicalPrefab, protagonist.position, protagonist.rotation);
         replayingClone.GetComponent<CloneRecordingPlayer>().records = records;
@@ -52,5 +55,28 @@ public class CloneManager : MonoBehaviour
     public void SaveRecording(List<TransformRecord> recording)
     {
         previousCloneRecording = recording;
+    }
+
+    public void OnRetryWithLastRecording()
+    {
+        if (previousCloneRecording != null && previousCloneRecording.Count > 0)
+        {
+            if (CloneRecordingCreator.instance != null)
+            {
+                CloneRecordingCreator.instance.CancelRecording();
+            }
+
+            var clonePlayer = FindObjectOfType<CloneRecordingPlayer>();
+            if (clonePlayer != null)
+            {
+                Destroy(clonePlayer.gameObject);
+            }
+
+            PlayRecording(previousCloneRecording.ToList());
+        }
+        else
+        {
+            Debug.Log("No previous recording exists.");
+        }
     }
 }

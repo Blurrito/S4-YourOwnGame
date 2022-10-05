@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RetryWithLastRecording",
+                    "type": "Button",
+                    "id": "369bd9f3-117d-40ce-9427-1b3a4c70312a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -256,6 +265,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "CancelRecord",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba0767f3-e358-480f-8568-460c95fd1dbc",
+                    "path": "<Keyboard>/#(R)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "RetryWithLastRecording",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

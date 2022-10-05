@@ -83,10 +83,13 @@ public class StateSaver : MonoBehaviour
 
     private void LoadComponent(Component component, StateStore stateStore)
     {
+        if (stateStore == null) return;
+
         Type t = component.GetType();
 
         if (t == typeof(Animator))
         {
+            if (stateStore.animator == null) return;
             Animator a = (Animator)component;
             
             foreach (var param in stateStore.animator.parameters)
@@ -97,6 +100,7 @@ public class StateSaver : MonoBehaviour
         }
         else if (t == typeof(Transform))
         {
+            if (stateStore.transform == null) return;
             Transform x = (Transform)component;
 
             x.SetPositionAndRotation(stateStore.transform.position, stateStore.transform.rotation);
