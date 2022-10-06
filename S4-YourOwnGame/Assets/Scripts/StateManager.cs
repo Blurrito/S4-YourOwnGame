@@ -13,12 +13,12 @@ public class StateManager : MonoBehaviour
 
     public void SaveAllStates(ObjectStateStamp stateStamp)
     {
-        BroadcastMessage("SaveState", stateStamp);
+        BroadcastMessage("SaveState", stateStamp, SendMessageOptions.DontRequireReceiver);
     }
 
     public void LoadAllStates(ObjectStateStamp stateStamp)
     {
-        BroadcastMessage("LoadState", stateStamp);
+        BroadcastMessage("LoadState", stateStamp, SendMessageOptions.DontRequireReceiver);
     }
 }
 
