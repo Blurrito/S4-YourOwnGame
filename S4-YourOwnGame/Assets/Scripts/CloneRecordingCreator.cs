@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using StarterAssets;
 using System;
+using System.Linq;
 
 public class CloneRecordingCreator : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CloneRecordingCreator : MonoBehaviour
 
     void OnEnable()
     {
+        StateManager.instance.SaveAllStates(ObjectStateStamp.recording);
         instance = this;
         records = new List<TransformRecord>();
         Invoke(nameof(DecreaseTimer), 1);
@@ -29,9 +31,9 @@ public class CloneRecordingCreator : MonoBehaviour
 
     private void DecreaseTimer()
     {
-        if (RecordingTimeLeft <= 0)
+        if (RecordingTimeLeft == 0)
         {
-            StopRecording();
+            StopAndPlayRecording();
         }
         else
         {
@@ -41,8 +43,10 @@ public class CloneRecordingCreator : MonoBehaviour
         }
     }
 
-    void StopRecording()
+    void StopAndPlayRecording()
     {
+        CloneManager.instance.SaveRecording(records.ToList());
+
         HudManager.instance.ActivateTimer(false);
         CloneManager.instance.PlayRecording(records);
         Destroy(gameObject);
@@ -53,5 +57,12 @@ public class CloneRecordingCreator : MonoBehaviour
         if (records.Count == 0) return;
 
         records[^1].animationRecords.Add(animationRecord);
+    }
+
+    public void CancelRecording()
+    {
+        HudManager.instance.ActivateTimer(false);
+        StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
+        Destroy(gameObject);
     }
 }
