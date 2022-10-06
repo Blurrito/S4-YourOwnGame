@@ -9,11 +9,10 @@ public class ButtonTrigger : MonoBehaviour
     [SerializeField] bool HasActiveTimer = false;
     [SerializeField] float ActiveTimerSeconds = 0f;
 
-    bool IsPressed = false;
+    public bool IsPressed = false;
 
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (!IsPressed)
             if (collision.gameObject.tag == "Player")
             {
@@ -25,9 +24,8 @@ public class ButtonTrigger : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (IsPressed)
-            if (collision.gameObject.tag =="Player")
+            if (collision.gameObject.tag == "Player")
             {
                 IsPressed = false;
                 if (HasActiveTimer)
@@ -37,7 +35,7 @@ public class ButtonTrigger : MonoBehaviour
             }
     }
 
-    private void TriggerEffect()
+    public void TriggerEffect()
     {
         if (EffectObjects != null)
             foreach (GameObject EffectObject in EffectObjects)
@@ -48,7 +46,7 @@ public class ButtonTrigger : MonoBehaviour
             }
     }
 
-    private void RevertEffect()
+    public void RevertEffect()
     {
         if (EffectObjects != null)
             foreach (GameObject EffectObject in EffectObjects)

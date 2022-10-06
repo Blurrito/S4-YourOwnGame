@@ -621,7 +621,7 @@ CharacterController:
   m_Height: 1.8
   m_Radius: 0.28
   m_SlopeLimit: 45
-  m_StepOffset: 0.25
+  m_StepOffset: 0.4
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.93, z: 0}
@@ -657,7 +657,7 @@ MonoBehaviour:
   FootstepAudioVolume: 0.3
   JumpHeight: 1.2
   Gravity: -15
-  JumpTimeout: 0.3
+  JumpTimeout: 0.05
   FallTimeout: 0.15
   Grounded: 1
   GroundedOffset: -0.14
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clone: {fileID: 1523504317800266868}
-  RecordingTimeLeft: 5
+  RecordingTimeLeft: 20
 --- !u!54 &6465708889147976244
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ CapsuleCollider:
   m_Radius: 0.35
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2261778753046674461
 GameObject:
   m_ObjectHideFlags: 0
