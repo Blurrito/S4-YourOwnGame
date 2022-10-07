@@ -259,6 +259,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f89202b0-21b7-47f8-9b1b-5d66cdc01745",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "StartRecord",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7c5032e8-c3f6-4b4a-a729-8925d57a05b9",
                     "path": "<Keyboard>/x",
                     "interactions": "",
@@ -270,11 +281,33 @@
                 },
                 {
                     "name": "",
+                    "id": "33772512-89c4-4a06-80b4-4845e80bff5d",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelRecord",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ba0767f3-e358-480f-8568-460c95fd1dbc",
                     "path": "<Keyboard>/#(R)",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
+                    "action": "RetryWithLastRecording",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f58eb76e-7ab5-457d-ba99-c87b3fe90d17",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "RetryWithLastRecording",
                     "isComposite": false,
                     "isPartOfComposite": false

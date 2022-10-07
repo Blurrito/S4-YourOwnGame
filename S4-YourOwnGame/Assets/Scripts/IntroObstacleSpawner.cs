@@ -21,7 +21,7 @@ public class IntroObstacleSpawner : MonoBehaviour
     private GameObject[] RandomizedJumpObstacles;
 
     private bool WalkPhaseEnded = false;
-    private bool JumpPhaseStarted = false;
+    private bool JumpPhaseEnded = false;
     private bool IsFinished = false;
     private int CurrentWalkObstacle = 0;
     private int CurrentJumpObstacle = 0;
@@ -29,6 +29,8 @@ public class IntroObstacleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AddDeathHandler(WalkObstacles);
+        AddDeathHandler(JumpObstacles);
         RandomizeJumpObstacleList();
         RandomizeWalkObstacleList();
     }
@@ -44,6 +46,20 @@ public class IntroObstacleSpawner : MonoBehaviour
         SetColliderEnabledStatus(false);
     }
 
+    private void AddDeathHandler(GameObject[] Obstacles)
+    {
+        foreach (GameObject Obstacle in Obstacles)
+        {
+            DeathHandler Component = null;
+            if (!Obstacle.TryGetComponent<DeathHandler>(out Component))
+            {
+                Obstacle.AddComponent<DeathHandler>();
+                Component = Obstacle.GetComponent<DeathHandler>();
+            }
+            Component.SetDeathHandlerFields(Obstacles);
+        }
+    }
+
     public void OnPlayerDeath() => ResetSpawner();
 
     public void ResetSpawner()
@@ -51,8 +67,9 @@ public class IntroObstacleSpawner : MonoBehaviour
         Debug.Log("Reset");
         if (!IsFinished)
         {
+            CancelSpawnObstacleInvokes();
             SetLiftAnimationState(false);
-            JumpPhaseStarted = false;
+            JumpPhaseEnded = false;
             WalkPhaseEnded = false;
             CurrentWalkObstacle = 0;
             CurrentJumpObstacle = 0;
@@ -60,15 +77,14 @@ public class IntroObstacleSpawner : MonoBehaviour
         }
     }
 
-    private void ObstacleTimer_Elapsed(object sender, ElapsedEventArgs e)
+    private void CancelSpawnObstacleInvokes()
     {
-        if (!JumpPhaseStarted && !WalkPhaseEnded)
-            SpawnNextWalkObstacle();
-        else if (!JumpPhaseStarted)
-            JumpPhaseStarted = true;
+        if (!WalkPhaseEnded)
+            CancelInvoke(nameof(SpawnNextWalkObstacle));
+        else if (!JumpPhaseEnded)
+            CancelInvoke(nameof(SpawnNextJumpObstacle));
         else if (!IsFinished)
-            SpawnNextJumpObstacle();
-
+            CancelInvoke(nameof(TriggerStairsAnimation));
     }
 
     private void SpawnNextWalkObstacle()
@@ -89,8 +105,8 @@ public class IntroObstacleSpawner : MonoBehaviour
         {
             CancelInvoke(nameof(SpawnNextJumpObstacle));
             SetLiftAnimationState(false);
-            Invoke(nameof(TriggerStairsAnimation), 3);
-            IsFinished = true;
+            Invoke(nameof(TriggerStairsAnimation), 5);
+            JumpPhaseEnded = true;
         }
     }
 
@@ -116,6 +132,7 @@ public class IntroObstacleSpawner : MonoBehaviour
         Animator StairsAnimator = Stairs.GetComponent<Animator>();
         if (StairsAnimator != null)
             StairsAnimator.SetBool("IsFinished", true);
+        IsFinished = true;
     }
 
     private void RandomizeWalkObstacleList()

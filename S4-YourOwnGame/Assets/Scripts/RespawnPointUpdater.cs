@@ -11,7 +11,6 @@ public class RespawnPointUpdater : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("RespawnUpdate");
         if (!IsTriggered)
             if (other.gameObject.tag.Equals("Player"))
             {
