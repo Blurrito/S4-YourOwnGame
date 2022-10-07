@@ -14,6 +14,8 @@ public class CloneManager : MonoBehaviour
 
     private List<TransformRecord> previousCloneRecording;
 
+    [SerializeField] bool canUseClones = true;
+
     private void Start()
     {
         instance = this;
@@ -21,6 +23,8 @@ public class CloneManager : MonoBehaviour
 
     void OnStartRecord()
     {
+        if (!canUseClones) return;
+
         if (FindObjectOfType<CloneRecordingPlayer>()) return;
 
         protagonist.GetComponent<PlayerInput>().enabled = false;
@@ -31,6 +35,8 @@ public class CloneManager : MonoBehaviour
 
     public void PlayRecording(List<TransformRecord> records)
     {
+        if (!canUseClones) return;
+
         StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
 
         transform.SetPositionAndRotation(records[0].position, records[0].rotation);
@@ -55,11 +61,15 @@ public class CloneManager : MonoBehaviour
 
     public void SaveRecording(List<TransformRecord> recording)
     {
+        if (!canUseClones) return;
+
         previousCloneRecording = recording;
     }
 
     public void OnRetryWithLastRecording()
     {
+        if (!canUseClones) return;
+
         if (previousCloneRecording != null && previousCloneRecording.Count > 0)
         {
             if (CloneRecordingCreator.instance != null)
