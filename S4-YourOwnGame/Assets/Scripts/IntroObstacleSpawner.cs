@@ -56,9 +56,19 @@ public class IntroObstacleSpawner : MonoBehaviour
                 Obstacle.AddComponent<DeathHandler>();
                 Component = Obstacle.GetComponent<DeathHandler>();
             }
-            Component.SetDeathHandlerFields(Obstacles);
+            Component.SetDeathHandlerFields(new GameObject[1] { gameObject });
         }
     }
+
+    //private void AddDeathHandler(GameObject[] Obstacles)
+    //{
+    //    foreach (GameObject Obstacle in Obstacles)
+    //    {
+    //        Obstacle.AddComponent<DeathHandler>();
+    //        DeathHandler Component = Obstacle.GetComponent<DeathHandler>();
+    //        Component.SetDeathHandlerFields(new GameObject[1] { gameObject });
+    //    }
+    //}
 
     public void OnPlayerDeath() => ResetSpawner();
 
