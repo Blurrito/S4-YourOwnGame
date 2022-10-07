@@ -36,6 +36,7 @@ public class CloneRecordingPlayer : MonoBehaviour
 
         if (records.Count == 0)
         {
+            transform.position = new Vector3(0, -1000, 0);
             Destroy(gameObject);
         }
     }
