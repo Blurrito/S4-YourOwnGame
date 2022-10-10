@@ -9,6 +9,7 @@ public class CloneManager : MonoBehaviour
     [SerializeField] Transform protagonist;
     [SerializeField] GameObject clonePhysicalPrefab;
     [SerializeField] GameObject cloneEnvisionPrefab;
+    [SerializeField] PlayerInput playerInput;
 
     public static CloneManager instance;
 
@@ -27,7 +28,7 @@ public class CloneManager : MonoBehaviour
 
         if (FindObjectOfType<CloneRecordingPlayer>()) return;
 
-        protagonist.GetComponent<PlayerInput>().enabled = false;
+        playerInput.enabled = false;
         protagonist.gameObject.SetActive(false);
         GameObject newClone = Instantiate(cloneEnvisionPrefab, protagonist.position, protagonist.rotation);
         //newClone.transform.Find("PlayerCameraRoot").rotation = transform.Find("PlayerCameraRoot").rotation;
@@ -49,13 +50,13 @@ public class CloneManager : MonoBehaviour
 
     private void FixInput()
     {
-        protagonist.GetComponent<PlayerInput>().enabled = true;
+        playerInput.enabled = true;
     }
 
     public void ReturnControlToPlayer()
     {
         protagonist.gameObject.SetActive(true);
-        protagonist.GetComponent<PlayerInput>().enabled = false;
+        playerInput.enabled = false;
         Invoke(nameof(FixInput), 0.01f);
     }
 
