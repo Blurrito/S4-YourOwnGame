@@ -2035,9 +2035,9 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 2
-    m_AccelTime: 0.2
-    m_DecelTime: 0.2
+    m_MaxSpeed: 0.15
+    m_AccelTime: 0
+    m_DecelTime: 0
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
@@ -2059,9 +2059,9 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 2
-    m_AccelTime: 0.2
-    m_DecelTime: 0.2
+    m_MaxSpeed: 0.15
+    m_AccelTime: 0
+    m_DecelTime: 0
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -2647,6 +2647,7 @@ MonoBehaviour:
   protagonist: {fileID: 6189874165015058711}
   clonePhysicalPrefab: {fileID: 2801137172152826827, guid: da0d5e3097ea25f42987ed998b91e34a, type: 3}
   cloneEnvisionPrefab: {fileID: 2193045994511427278, guid: 0c0b494af696f134a9c922a4fe565f28, type: 3}
+  canUseClones: 1
 --- !u!54 &2748434614555291003
 Rigidbody:
   m_ObjectHideFlags: 0
