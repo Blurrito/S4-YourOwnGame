@@ -26,7 +26,7 @@ public class CloneManager : MonoBehaviour
         protagonist.GetComponent<PlayerInput>().enabled = false;
         protagonist.gameObject.SetActive(false);
         GameObject newClone = Instantiate(cloneEnvisionPrefab, protagonist.position, protagonist.rotation);
-        newClone.transform.Find("PlayerCameraRoot").rotation = transform.Find("PlayerCameraRoot").rotation;
+        //newClone.transform.Find("PlayerCameraRoot").rotation = transform.Find("PlayerCameraRoot").rotation;
     }
 
     public void PlayRecording(List<TransformRecord> records)
