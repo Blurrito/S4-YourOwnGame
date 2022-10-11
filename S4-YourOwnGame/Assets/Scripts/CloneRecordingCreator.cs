@@ -9,7 +9,6 @@ using System.Linq;
 public class CloneRecordingCreator : MonoBehaviour
 {
     List<TransformRecord> records = new List<TransformRecord>();
-    [SerializeField] Transform clone;
     [SerializeField] int RecordingTimeLeft = 30;
 
     public static CloneRecordingCreator instance;
@@ -28,9 +27,6 @@ public class CloneRecordingCreator : MonoBehaviour
 
     void FixedUpdate()
     {
-<<<<<<< Updated upstream
-        records.Add(new TransformRecord(clone));
-=======
         records.Add(new TransformRecord(transform, new CollidersRecord(touchingObjects)));
     }
 
@@ -42,7 +38,6 @@ public class CloneRecordingCreator : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         touchingObjects.Remove(collision.gameObject);
->>>>>>> Stashed changes
     }
 
     private void DecreaseTimer()

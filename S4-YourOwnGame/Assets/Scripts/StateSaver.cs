@@ -14,7 +14,9 @@ public class StateSaver : MonoBehaviour
         StateStore ss = stateStores.SingleOrDefault(x => x.stateStamp == stateStamp);
         if (ss == null)
         {
-            return new StateStore(stateStamp);
+            StateStore newSs = new StateStore(stateStamp);
+            stateStores.Add(newSs);
+            return newSs;
         }
         else
         {
@@ -60,7 +62,7 @@ public class StateSaver : MonoBehaviour
 
             stateStore.animator = new AnimatorStore()
             {
-                animationName = x.GetCurrentAnimatorClipInfo(0)[0].clip.name,
+                animationName = x.GetCurrentAnimatorStateInfo(0).shortNameHash,
                 parameters = parameters,
                 timeIndex = x.GetCurrentAnimatorStateInfo(0).normalizedTime
             };
@@ -73,6 +75,15 @@ public class StateSaver : MonoBehaviour
             {
                 position = x.position,
                 rotation = x.rotation
+            };
+        }
+        else if (t == typeof(ButtonTrigger))
+        {
+            ButtonTrigger x = (ButtonTrigger)component;
+
+            stateStore.buttonTrigger = new ButtonTriggerStore()
+            {
+                isPressed = x.IsPressed
             };
         }
         else
@@ -104,6 +115,21 @@ public class StateSaver : MonoBehaviour
             Transform x = (Transform)component;
 
             x.SetPositionAndRotation(stateStore.transform.position, stateStore.transform.rotation);
+        }
+        else if (t == typeof(ButtonTrigger))
+        {
+            if (stateStore.buttonTrigger == null) return;
+            ButtonTrigger x = (ButtonTrigger)component;
+
+            x.IsPressed = stateStore.buttonTrigger.isPressed;
+            if (x.IsPressed)
+            {
+                x.TriggerEffect();
+            }
+            else
+            {
+                x.RevertEffect();
+            }
         }
         else
         {

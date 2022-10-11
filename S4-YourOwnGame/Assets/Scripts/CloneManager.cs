@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
+using Cinemachine;
 
 public class CloneManager : MonoBehaviour
 {
     [SerializeField] Transform protagonist;
     [SerializeField] GameObject clonePhysicalPrefab;
     [SerializeField] GameObject cloneEnvisionPrefab;
+    [SerializeField] PlayerInput playerInput;
+    [SerializeField] CinemachineVirtualCamera virtualCamera;
 
     public static CloneManager instance;
 
     private List<TransformRecord> previousCloneRecording;
+
+    [SerializeField] bool canUseClones = true;
 
     private void Start()
     {
@@ -21,23 +26,19 @@ public class CloneManager : MonoBehaviour
 
     void OnStartRecord()
     {
+        if (!canUseClones) return;
+
         if (FindObjectOfType<CloneRecordingPlayer>()) return;
 
-<<<<<<< Updated upstream
-        protagonist.GetComponent<PlayerInput>().enabled = false;
-        protagonist.gameObject.SetActive(false);
-        Instantiate(cloneEnvisionPrefab, protagonist.position, protagonist.rotation);
-=======
         playerInput.enabled = false;
         virtualCamera.gameObject.SetActive(false);
         GameObject newClone = Instantiate(cloneEnvisionPrefab, transform.position, transform.rotation);
-
-        //TODO: set newClone vcam pos and rot to own vcam pos and rot
->>>>>>> Stashed changes
     }
 
     public void PlayRecording(List<TransformRecord> records)
     {
+        if (!canUseClones) return;
+
         StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
 
         transform.SetPositionAndRotation(records[0].position, records[0].rotation);
@@ -50,28 +51,27 @@ public class CloneManager : MonoBehaviour
 
     private void FixInput()
     {
-        protagonist.GetComponent<PlayerInput>().enabled = true;
+        playerInput.enabled = true;
     }
 
     public void ReturnControlToPlayer()
     {
-<<<<<<< Updated upstream
-        protagonist.gameObject.SetActive(true);
-        protagonist.GetComponent<PlayerInput>().enabled = false;
-=======
         virtualCamera.gameObject.SetActive(true);
         playerInput.enabled = false;
->>>>>>> Stashed changes
         Invoke(nameof(FixInput), 0.01f);
     }
 
     public void SaveRecording(List<TransformRecord> recording)
     {
+        if (!canUseClones) return;
+
         previousCloneRecording = recording;
     }
 
     public void OnRetryWithLastRecording()
     {
+        if (!canUseClones) return;
+
         if (previousCloneRecording != null && previousCloneRecording.Count > 0)
         {
             if (CloneRecordingCreator.instance != null)
