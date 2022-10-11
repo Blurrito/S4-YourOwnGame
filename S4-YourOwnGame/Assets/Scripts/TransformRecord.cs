@@ -7,11 +7,13 @@ public class TransformRecord
     public Vector3 position;
     public Quaternion rotation;
     public List<AnimationRecord> animationRecords = new List<AnimationRecord>();
+    public CollidersRecord colliders;
 
-    public TransformRecord(Transform t)
+    public TransformRecord(Transform t, CollidersRecord c)
     {
         position = t.position;
         rotation = t.rotation;
+        colliders = c;
     }
 }
 
@@ -34,5 +36,15 @@ public class AnimationRecord
         name = _name;
         numState = _state;
         isBool = false;
+    }
+}
+
+public class CollidersRecord
+{
+    public List<GameObject> gameObjects;
+
+    public CollidersRecord(List<GameObject> touchingObjects)
+    {
+        gameObjects = touchingObjects;
     }
 }

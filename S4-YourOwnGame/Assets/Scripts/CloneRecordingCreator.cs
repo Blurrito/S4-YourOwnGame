@@ -14,6 +14,8 @@ public class CloneRecordingCreator : MonoBehaviour
 
     public static CloneRecordingCreator instance;
 
+    List<GameObject> touchingObjects = new();
+
     void OnEnable()
     {
         StateManager.instance.SaveAllStates(ObjectStateStamp.recording);
@@ -26,7 +28,21 @@ public class CloneRecordingCreator : MonoBehaviour
 
     void FixedUpdate()
     {
+<<<<<<< Updated upstream
         records.Add(new TransformRecord(clone));
+=======
+        records.Add(new TransformRecord(transform, new CollidersRecord(touchingObjects)));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        touchingObjects.Add(collision.gameObject);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        touchingObjects.Remove(collision.gameObject);
+>>>>>>> Stashed changes
     }
 
     private void DecreaseTimer()

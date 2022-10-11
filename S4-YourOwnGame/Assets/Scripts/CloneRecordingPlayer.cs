@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CloneRecordingPlayer : MonoBehaviour
@@ -11,6 +12,18 @@ public class CloneRecordingPlayer : MonoBehaviour
     [SerializeField] AudioClip onLandSound;
 
     [SerializeField, Range(0, 1), ] float footstepAudioVolume;
+
+    List<GameObject> touchingObjects = new();
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        touchingObjects.Add(collision.gameObject);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        touchingObjects.Remove(collision.gameObject);
+    }
 
 
     void FixedUpdate()
@@ -30,7 +43,16 @@ public class CloneRecordingPlayer : MonoBehaviour
             {
                 animator.SetFloat(ar.name, ar.numState);
             }
-        } 
+        }
+
+        //checks whether the list of objects we are currently touching is equal to the list of objects we touching during the creation of the recording
+        if (touchingObjects.All(records[0].colliders.gameObjects.Contains) && records[0].colliders.gameObjects.All(touchingObjects.Contains))
+        {
+            Debug.Log("this bitch died prematurely ahahahahahah");
+            //transform.position = new Vector3(0, -1000, 0);
+            //Destroy(gameObject);
+            //return;
+        }
 
         records.RemoveAt(0);
 

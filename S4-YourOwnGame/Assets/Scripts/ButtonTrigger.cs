@@ -9,32 +9,52 @@ public class ButtonTrigger : MonoBehaviour
     [SerializeField] bool HasActiveTimer = false;
     [SerializeField] float ActiveTimerSeconds = 0f;
 
+<<<<<<< Updated upstream
     bool IsPressed = false;
+=======
+    List<GameObject> collidingObjects = new();
+
+    public bool IsPressed = false;
+>>>>>>> Stashed changes
 
     public void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.tag);
         if (!IsPressed)
+        {
             if (collision.gameObject.tag == "Player")
             {
+                collidingObjects.Add(collision.gameObject);
                 IsPressed = true;
                 CancelInvoke(nameof(RevertEffect));
                 TriggerEffect();
             }
+        }
     }
 
     public void OnCollisionExit(Collision collision)
     {
         Debug.Log(collision.gameObject.tag);
         if (IsPressed)
+<<<<<<< Updated upstream
             if (collision.gameObject.tag =="Player")
+=======
+        {
+            if (collision.gameObject.tag == "Player")
+>>>>>>> Stashed changes
             {
-                IsPressed = false;
-                if (HasActiveTimer)
-                    Invoke(nameof(RevertEffect), ActiveTimerSeconds);
-                else
-                    RevertEffect();
+                collidingObjects.Remove(collision.gameObject);
+
+                if (collidingObjects.Count == 0)
+                {
+                    IsPressed = false;
+                    if (HasActiveTimer)
+                        Invoke(nameof(RevertEffect), ActiveTimerSeconds);
+                    else
+                        RevertEffect();
+                }
             }
+        }
     }
 
     private void TriggerEffect()

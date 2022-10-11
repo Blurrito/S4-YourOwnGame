@@ -23,9 +23,17 @@ public class CloneManager : MonoBehaviour
     {
         if (FindObjectOfType<CloneRecordingPlayer>()) return;
 
+<<<<<<< Updated upstream
         protagonist.GetComponent<PlayerInput>().enabled = false;
         protagonist.gameObject.SetActive(false);
         Instantiate(cloneEnvisionPrefab, protagonist.position, protagonist.rotation);
+=======
+        playerInput.enabled = false;
+        virtualCamera.gameObject.SetActive(false);
+        GameObject newClone = Instantiate(cloneEnvisionPrefab, transform.position, transform.rotation);
+
+        //TODO: set newClone vcam pos and rot to own vcam pos and rot
+>>>>>>> Stashed changes
     }
 
     public void PlayRecording(List<TransformRecord> records)
@@ -47,8 +55,13 @@ public class CloneManager : MonoBehaviour
 
     public void ReturnControlToPlayer()
     {
+<<<<<<< Updated upstream
         protagonist.gameObject.SetActive(true);
         protagonist.GetComponent<PlayerInput>().enabled = false;
+=======
+        virtualCamera.gameObject.SetActive(true);
+        playerInput.enabled = false;
+>>>>>>> Stashed changes
         Invoke(nameof(FixInput), 0.01f);
     }
 
