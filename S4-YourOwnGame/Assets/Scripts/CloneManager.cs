@@ -31,10 +31,8 @@ public class CloneManager : MonoBehaviour
         if (FindObjectOfType<CloneRecordingPlayer>()) return;
 
         playerInput.enabled = false;
-        protagonist.gameObject.SetActive(false);
+        virtualCamera.gameObject.SetActive(false);
         GameObject newClone = Instantiate(cloneEnvisionPrefab, transform.position, transform.rotation);
-
-        //TODO: set newClone vcam pos and rot to own vcam pos and rot
     }
 
     public void PlayRecording(List<TransformRecord> records)
@@ -58,7 +56,7 @@ public class CloneManager : MonoBehaviour
 
     public void ReturnControlToPlayer()
     {
-        protagonist.gameObject.SetActive(true);
+        virtualCamera.gameObject.SetActive(true);
         playerInput.enabled = false;
         Invoke(nameof(FixInput), 0.01f);
     }
