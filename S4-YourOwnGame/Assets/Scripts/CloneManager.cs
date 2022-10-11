@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
+using Cinemachine;
 
 public class CloneManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CloneManager : MonoBehaviour
     [SerializeField] GameObject clonePhysicalPrefab;
     [SerializeField] GameObject cloneEnvisionPrefab;
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] CinemachineVirtualCamera virtualCamera;
 
     public static CloneManager instance;
 
@@ -30,8 +32,9 @@ public class CloneManager : MonoBehaviour
 
         playerInput.enabled = false;
         protagonist.gameObject.SetActive(false);
-        GameObject newClone = Instantiate(cloneEnvisionPrefab, protagonist.position, protagonist.rotation);
-        //newClone.transform.Find("PlayerCameraRoot").rotation = transform.Find("PlayerCameraRoot").rotation;
+        GameObject newClone = Instantiate(cloneEnvisionPrefab, transform.position, transform.rotation);
+
+        //TODO: set newClone vcam pos and rot to own vcam pos and rot
     }
 
     public void PlayRecording(List<TransformRecord> records)

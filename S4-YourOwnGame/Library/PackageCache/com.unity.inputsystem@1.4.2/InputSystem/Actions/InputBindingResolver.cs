@@ -635,7 +635,7 @@ namespace UnityEngine.InputSystem
                 }
                 else
                 {
-                    //Debug.Assert(type.IsInstanceOfType(array[count]), "Type of instance in array does not match expected type");
+                    Debug.Assert(type.IsInstanceOfType(array[count]), "Type of instance in array does not match expected type");
                     ++count;
                 }
             }
