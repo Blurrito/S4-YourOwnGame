@@ -2,48 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Timers;
+using System.Linq;
 
 public class ButtonTrigger : MonoBehaviour
 {
     [SerializeField] GameObject[] EffectObjects;
+    [SerializeField] bool DisableOnExit = true;
     [SerializeField] bool HasActiveTimer = false;
     [SerializeField] float ActiveTimerSeconds = 0f;
-
-    List<GameObject> collidingObjects = new();
+    [SerializeField] bool HasObjectTagRestriction = false;
+    [SerializeField] string[] TagNames;
 
     public bool IsPressed = false;
+    private List<GameObject> Actors = new List<GameObject>();
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (!IsPressed)
+        if (!Actors.Contains(collision.gameObject))
         {
-            if (collision.gameObject.tag == "Player")
+            Actors.Add(collision.gameObject);
+            if (!IsPressed)
             {
-                collidingObjects.Add(collision.gameObject);
-                IsPressed = true;
-                CancelInvoke(nameof(RevertEffect));
-                TriggerEffect();
+                if (HasObjectTagRestriction && TagNames != null)
+                {
+                    if (TagNames.Contains(collision.gameObject.tag))
+                        BeginButtonPress();
+                }
+                else
+                    BeginButtonPress();
             }
         }
     }
 
     public void OnCollisionExit(Collision collision)
     {
-        if (IsPressed)
+        if (IsPressed && Actors.Contains(collision.gameObject))
         {
-            if (collision.gameObject.tag == "Player")
-            {
-                collidingObjects.Remove(collision.gameObject);
-
-                if (collidingObjects.Count == 0)
-                {
-                    IsPressed = false;
-                    if (HasActiveTimer)
-                        Invoke(nameof(RevertEffect), ActiveTimerSeconds);
-                    else
-                        RevertEffect();
-                }
-            }
+            Actors.Remove(collision.gameObject);
+            if (Actors.Count == 0 && DisableOnExit)
+                EndButtonPress();
         }
     }
 
@@ -69,5 +66,19 @@ public class ButtonTrigger : MonoBehaviour
             }
     }
 
-    private void Timer_Elapsed(object sender, ElapsedEventArgs e) => RevertEffect();
+    private void BeginButtonPress()
+    {
+        IsPressed = true;
+        CancelInvoke(nameof(RevertEffect));
+        TriggerEffect();
+    }
+
+    private void EndButtonPress()
+    {
+        IsPressed = false;
+        if (HasActiveTimer)
+            Invoke(nameof(RevertEffect), ActiveTimerSeconds);
+        else
+            RevertEffect();
+    }
 }
