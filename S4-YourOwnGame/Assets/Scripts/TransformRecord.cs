@@ -7,11 +7,13 @@ public class TransformRecord
     public Vector3 position;
     public Quaternion rotation;
     public List<AnimationRecord> animationRecords = new List<AnimationRecord>();
+    public bool IsGrounded;
 
-    public TransformRecord(Transform t)
+    public TransformRecord(Transform t, bool isGrounded)
     {
         position = t.position;
         rotation = t.rotation;
+        IsGrounded = isGrounded;
     }
 }
 

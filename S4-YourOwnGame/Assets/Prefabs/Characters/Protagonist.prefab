@@ -818,7 +818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6246441695975633880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -38.4}
+  m_LocalPosition: {x: -17.3, y: 0, z: -29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1061,6 +1061,8 @@ MonoBehaviour:
   clonePhysicalPrefab: {fileID: 2801137172152826827, guid: da0d5e3097ea25f42987ed998b91e34a, type: 3}
   cloneEnvisionPrefab: {fileID: 1269124016652172465, guid: 789f3aa7a8a1e164c87d562495cbbf91, type: 3}
   playerInput: {fileID: 6246441695975633858}
+  virtualCamera: {fileID: 6246441696754969467}
+  audioListener: {fileID: 6246441697420000438}
   canUseClones: 1
 --- !u!54 &6246441695975633884
 Rigidbody:
@@ -2000,7 +2002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6246441696754969463}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.325, z: -42.4}
+  m_LocalPosition: {x: -17.300009, y: 1.325, z: -33.000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2917,7 +2919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6246441697420000435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05000019, z: -4}
+  m_LocalPosition: {x: -0.000009536743, y: -0.049999952, z: -4.0000153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CloneRecordingPlayer : MonoBehaviour
@@ -12,10 +13,12 @@ public class CloneRecordingPlayer : MonoBehaviour
 
     [SerializeField, Range(0, 1), ] float footstepAudioVolume;
 
-
+    [SerializeField] DisintegrationManager disintegrationManager;
     void FixedUpdate()
     {
         if (records.Count == 0) return;
+
+        disintegrationManager.CheckGroundedEqual(records[0].IsGrounded);
 
         transform.position = records[0].position;
         transform.rotation = records[0].rotation;
@@ -30,15 +33,20 @@ public class CloneRecordingPlayer : MonoBehaviour
             {
                 animator.SetFloat(ar.name, ar.numState);
             }
-        } 
+        }
 
         records.RemoveAt(0);
 
         if (records.Count == 0)
         {
-            transform.position = new Vector3(0, -1000, 0);
-            Destroy(gameObject);
+            KillClone();
         }
+    }
+
+    public void KillClone()
+    {
+        transform.position = new Vector3(0, -1000, 0);
+        Destroy(gameObject);
     }
 
     private void OnFootstep(AnimationEvent animationEvent)
