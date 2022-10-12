@@ -2,37 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Timers;
+using System.Linq;
 
 public class ButtonTrigger : MonoBehaviour
 {
     [SerializeField] GameObject[] EffectObjects;
+    [SerializeField] bool DisableOnExit = true;
     [SerializeField] bool HasActiveTimer = false;
     [SerializeField] float ActiveTimerSeconds = 0f;
+    [SerializeField] bool HasObjectTagRestriction = false;
+    [SerializeField] string[] TagNames;
 
     public bool IsPressed = false;
+    private List<Collision> Actors = new List<Collision>();
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (!IsPressed)
-            if (collision.gameObject.tag == "Player")
+        if (!Actors.Contains(collision))
+        {
+            Actors.Add(collision);
+            if (!IsPressed)
             {
-                IsPressed = true;
-                CancelInvoke(nameof(RevertEffect));
-                TriggerEffect();
+                if (HasObjectTagRestriction && TagNames != null)
+                {
+                    if (TagNames.Contains(collision.gameObject.tag))
+                        BeginButtonPress();
+                }
+                else
+                    BeginButtonPress();
             }
+        }
     }
 
     public void OnCollisionExit(Collision collision)
     {
-        if (IsPressed)
-            if (collision.gameObject.tag == "Player")
-            {
-                IsPressed = false;
-                if (HasActiveTimer)
-                    Invoke(nameof(RevertEffect), ActiveTimerSeconds);
-                else
-                    RevertEffect();
-            }
+        if (IsPressed && Actors.Contains(collision))
+        {
+            Actors.Remove(collision);
+            if (Actors.Count == 0 && DisableOnExit)
+                EndButtonPress();
+        }
     }
 
     public void TriggerEffect()
@@ -57,5 +66,19 @@ public class ButtonTrigger : MonoBehaviour
             }
     }
 
-    private void Timer_Elapsed(object sender, ElapsedEventArgs e) => RevertEffect();
+    private void BeginButtonPress()
+    {
+        IsPressed = true;
+        CancelInvoke(nameof(RevertEffect));
+        TriggerEffect();
+    }
+
+    private void EndButtonPress()
+    {
+        IsPressed = false;
+        if (HasActiveTimer)
+            Invoke(nameof(RevertEffect), ActiveTimerSeconds);
+        else
+            RevertEffect();
+    }
 }
