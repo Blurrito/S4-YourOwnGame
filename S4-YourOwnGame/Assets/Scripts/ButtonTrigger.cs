@@ -9,8 +9,6 @@ public class ButtonTrigger : MonoBehaviour
     [SerializeField] bool HasActiveTimer = false;
     [SerializeField] float ActiveTimerSeconds = 0f;
 
-    bool IsPressed = false;
-
     List<GameObject> collidingObjects = new();
 
     public bool IsPressed = false;

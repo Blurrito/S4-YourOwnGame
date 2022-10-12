@@ -15,6 +15,8 @@ public class CloneRecordingCreator : MonoBehaviour
 
     List<GameObject> touchingObjects = new();
 
+    [SerializeField] ThirdPersonController ThirdPersonController;
+
     void OnEnable()
     {
         StateManager.instance.SaveAllStates(ObjectStateStamp.recording);
@@ -27,7 +29,7 @@ public class CloneRecordingCreator : MonoBehaviour
 
     void FixedUpdate()
     {
-        records.Add(new TransformRecord(transform, new CollidersRecord(touchingObjects)));
+        records.Add(new TransformRecord(transform, ThirdPersonController.Grounded));
     }
 
     private void OnCollisionEnter(Collision collision)

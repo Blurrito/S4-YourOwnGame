@@ -2863,6 +2863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RecordingTimeLeft: 20
+  ThirdPersonController: {fileID: 7572163153969166640}
 --- !u!1 &7682230364652866919
 GameObject:
   m_ObjectHideFlags: 0

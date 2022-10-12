@@ -12,6 +12,7 @@ public class CloneManager : MonoBehaviour
     [SerializeField] GameObject cloneEnvisionPrefab;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] CinemachineVirtualCamera virtualCamera;
+    [SerializeField] AudioListener audioListener;
 
     public static CloneManager instance;
 
@@ -32,6 +33,7 @@ public class CloneManager : MonoBehaviour
 
         playerInput.enabled = false;
         virtualCamera.gameObject.SetActive(false);
+        audioListener.enabled = false;
         GameObject newClone = Instantiate(cloneEnvisionPrefab, transform.position, transform.rotation);
     }
 
@@ -56,6 +58,7 @@ public class CloneManager : MonoBehaviour
 
     public void ReturnControlToPlayer()
     {
+        audioListener.enabled = true;
         virtualCamera.gameObject.SetActive(true);
         playerInput.enabled = false;
         Invoke(nameof(FixInput), 0.01f);

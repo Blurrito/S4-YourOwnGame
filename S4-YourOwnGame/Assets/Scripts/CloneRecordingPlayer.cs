@@ -13,22 +13,12 @@ public class CloneRecordingPlayer : MonoBehaviour
 
     [SerializeField, Range(0, 1), ] float footstepAudioVolume;
 
-    List<GameObject> touchingObjects = new();
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        touchingObjects.Add(collision.gameObject);
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        touchingObjects.Remove(collision.gameObject);
-    }
-
-
+    [SerializeField] DisintegrationManager disintegrationManager;
     void FixedUpdate()
     {
         if (records.Count == 0) return;
+
+        disintegrationManager.CheckGroundedEqual(records[0].IsGrounded);
 
         transform.position = records[0].position;
         transform.rotation = records[0].rotation;
@@ -45,22 +35,18 @@ public class CloneRecordingPlayer : MonoBehaviour
             }
         }
 
-        //checks whether the list of objects we are currently touching is equal to the list of objects we touching during the creation of the recording
-        if (touchingObjects.All(records[0].colliders.gameObjects.Contains) && records[0].colliders.gameObjects.All(touchingObjects.Contains))
-        {
-            Debug.Log("this bitch died prematurely ahahahahahah");
-            //transform.position = new Vector3(0, -1000, 0);
-            //Destroy(gameObject);
-            //return;
-        }
-
         records.RemoveAt(0);
 
         if (records.Count == 0)
         {
-            transform.position = new Vector3(0, -1000, 0);
-            Destroy(gameObject);
+            KillClone();
         }
+    }
+
+    public void KillClone()
+    {
+        transform.position = new Vector3(0, -1000, 0);
+        Destroy(gameObject);
     }
 
     private void OnFootstep(AnimationEvent animationEvent)
