@@ -11,28 +11,24 @@ public class CameraSensitivityController : MonoBehaviour
     [SerializeField] float JoystickHorizontalGain = 2f;
     [SerializeField] float JoystickVerticalGain = 2f;
 
-    private int CameraStatus = -1;
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (CameraObject == null)
+        if (CameraObject != null)
         {
             CinemachinePOV Aim = CameraObject.GetCinemachineComponent<CinemachinePOV>();
             string[] JoystickNames = Input.GetJoystickNames();
+
             if (JoystickNames != null && Aim != null)
             {
-                if (JoystickNames.Length > 0 && CameraStatus != 0)
+                if (JoystickNames.Length > 0)
                 {
                     Aim.m_HorizontalAxis.m_MaxSpeed = JoystickHorizontalGain;
                     Aim.m_VerticalAxis.m_MaxSpeed = JoystickVerticalGain;
-                    CameraStatus = 0;
                 }
-                else if (CameraStatus != 1)
+                else
                 {
                     Aim.m_HorizontalAxis.m_MaxSpeed = MouseHorizontalGain;
                     Aim.m_VerticalAxis.m_MaxSpeed = MouseVerticalGain;
-                    CameraStatus = 1;
                 }
             }
         }

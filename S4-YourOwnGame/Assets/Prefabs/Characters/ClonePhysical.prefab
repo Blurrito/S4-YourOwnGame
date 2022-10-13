@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 127065442931727958}
   m_Layer: 6
   m_Name: ClonePhysical
-  m_TagString: Player
+  m_TagString: PlayerClone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

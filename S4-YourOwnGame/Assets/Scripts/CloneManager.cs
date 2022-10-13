@@ -18,7 +18,7 @@ public class CloneManager : MonoBehaviour
 
     private List<TransformRecord> previousCloneRecording;
 
-    [SerializeField] bool canUseClones = true;
+    [SerializeField] public bool canUseClones = true;
 
     private void Start()
     {

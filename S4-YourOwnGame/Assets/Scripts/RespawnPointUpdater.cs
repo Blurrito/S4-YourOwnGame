@@ -7,15 +7,12 @@ public class RespawnPointUpdater : MonoBehaviour
     [SerializeField] PlayerRespawn RespawnObject;
     [SerializeField] GameObject RespawnPoint;
 
-    private bool IsTriggered = false;
-
     public void OnTriggerEnter(Collider other)
     {
-        if (!IsTriggered)
-            if (other.gameObject.tag.Equals("Player"))
-            {
-                IsTriggered = true;
-                RespawnObject.SetRespawnPoint(RespawnPoint);
-            }
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            RespawnObject.SetRespawnPoint(RespawnPoint);
+            Destroy(gameObject);
+        }
     }
 }
