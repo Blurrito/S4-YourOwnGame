@@ -8,6 +8,8 @@ public class HintPopupTrigger : MonoBehaviour
     [SerializeField] float staySeconds = 10;
     [SerializeField, Tooltip("Set to -1 to show infinitely.")] int amountToShowBeforeDestroy = 1;
 
+    GameObject createdPopup;
+
     bool currentlyShowingThisPopup = false;
 
     private void OnTriggerEnter(Collider other)
@@ -17,17 +19,17 @@ public class HintPopupTrigger : MonoBehaviour
         if (currentlyShowingThisPopup) return;
 
         currentlyShowingThisPopup = true;
-        Debug.Log(hintText);
-        //TODO: instead of debug log, add to list of popups in canvas
+        var newPopup = DialogueManager.instance.AddHintPopup(hintText);
 
         amountToShowBeforeDestroy--;
         Invoke(nameof(StopShowingPopup), staySeconds);
+
+        createdPopup = newPopup;
     }
 
     private void StopShowingPopup()
     {
-        Debug.Log("Hint disabled");
-        //TODO: instead of debug log, remove from list of popups in canvas
+        Destroy(createdPopup);
 
         currentlyShowingThisPopup = false;
 

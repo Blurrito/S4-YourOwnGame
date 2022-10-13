@@ -18,6 +18,8 @@ public class ButtonTrigger : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        Actors.RemoveAll(x => x == null);
+
         if (!Actors.Contains(collision.gameObject))
         {
             Actors.Add(collision.gameObject);
@@ -36,6 +38,8 @@ public class ButtonTrigger : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
+        Actors.RemoveAll(x => x == null);
+
         if (IsPressed && Actors.Contains(collision.gameObject))
         {
             Actors.Remove(collision.gameObject);

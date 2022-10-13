@@ -76,6 +76,7 @@ public class CloneRecordingCreator : MonoBehaviour
     {
         HudManager.instance.ActivateTimer(false);
         StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
-        Destroy(gameObject);
+        transform.parent.position = new Vector3(0, -1000, 0);
+        Destroy(transform.parent.gameObject);
     }
 }
