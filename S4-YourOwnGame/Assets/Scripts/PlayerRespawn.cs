@@ -8,6 +8,8 @@ public class PlayerRespawn : MonoBehaviour
 
     private GameObject CurrentRespawnPoint;
 
+    [SerializeField] AudioClip respawnSound;
+
     private void Start()
     {
         instance = this;
@@ -21,6 +23,7 @@ public class PlayerRespawn : MonoBehaviour
 
     public void RespawnObject()
     {
+        AudioSource.PlayClipAtPoint(respawnSound, transform.position);
         if (CurrentRespawnPoint != null)
             transform.position = CurrentRespawnPoint.transform.position;
     }

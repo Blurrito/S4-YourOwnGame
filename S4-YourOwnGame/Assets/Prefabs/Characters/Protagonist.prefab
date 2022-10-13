@@ -1106,6 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09c307252ebe0442984dc70f7e5ec89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnSound: {fileID: 8300000, guid: e9566600905d7644d9a749690f7b3c33, type: 3}
 --- !u!1 &6246441696000481870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,7 +2003,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6246441696754969463}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.300009, y: 1.325, z: -33.000015}
+  m_LocalPosition: {x: -17.3, y: 1.325, z: -33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2937,7 +2938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6246441697420000435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000009536743, y: -0.049999952, z: -4.0000153}
+  m_LocalPosition: {x: 0, y: -0.049999952, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
