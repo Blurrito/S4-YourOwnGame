@@ -36,7 +36,7 @@ public class DeathHandler : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        PlayerRespawn Respawner = gameObject.GetComponent<PlayerRespawn>();
+        PlayerRespawn Respawner = PlayerRespawn.instance;
         if (Respawner != null)
             Respawner.RespawnObject();
     }

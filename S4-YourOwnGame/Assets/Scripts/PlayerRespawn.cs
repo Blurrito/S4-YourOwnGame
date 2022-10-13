@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
+    public static PlayerRespawn instance;
+
     private GameObject CurrentRespawnPoint;
+
+    private void Start()
+    {
+        instance = this;
+    }
 
     public void SetRespawnPoint(GameObject NewRespawnPoint)
     {
