@@ -5,19 +5,16 @@ using UnityEngine;
 public class DeathHandler : MonoBehaviour
 {
     [SerializeField] GameObject[] OnDeathFunctions;
+    [SerializeField] bool TriggerPlayerDeath = true;
+    [SerializeField] bool TriggerCloneDisintegration = true;
 
     public void SetDeathHandlerFields(GameObject[] OnDeathFunctions) => this.OnDeathFunctions = OnDeathFunctions;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-            RespawnPlayer(collision);
-        else if (collision.gameObject.CompareTag("PlayerClone"))
-            PerformPrematureDisintegration(collision);
-        ExecuteOnDeathFunctions();
-    }
+    private void OnTriggerEnter(Collider other) => PerformDeathHandlerFunctions(other.gameObject);
 
-    private void PerformPrematureDisintegration(Collision collision)
+    private void OnCollisionEnter(Collision collision) => PerformDeathHandlerFunctions(collision.gameObject);
+
+    private void PerformPrematureDisintegration()
     {
         if (CloneRecordingCreator.instance != null)
         {
@@ -26,9 +23,20 @@ public class DeathHandler : MonoBehaviour
         }
     }
 
-    private void RespawnPlayer(Collision collision)
+    private void PerformDeathHandlerFunctions(GameObject collision)
     {
-        PlayerRespawn Respawner = collision.gameObject.GetComponent<PlayerRespawn>();
+        if (collision.gameObject.CompareTag("Player") && TriggerPlayerDeath)
+        {
+            RespawnPlayer();
+            ExecuteOnDeathFunctions();
+        }
+        else if (collision.gameObject.CompareTag("PlayerClone") && TriggerCloneDisintegration)
+            PerformPrematureDisintegration();
+    }
+
+    private void RespawnPlayer()
+    {
+        PlayerRespawn Respawner = gameObject.GetComponent<PlayerRespawn>();
         if (Respawner != null)
             Respawner.RespawnObject();
     }
