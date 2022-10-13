@@ -262,8 +262,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 0.9, z: 0.1}
-  m_Center: {x: 0, y: 0.45, z: -0.1}
+  m_Size: {x: 10, y: 0.9, z: 0.364}
+  m_Center: {x: 0, y: 0.45, z: -0.05}
 --- !u!114 &5971093464385641578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnDeathFunctions: []
+  TriggerPlayerDeath: 1
+  TriggerCloneDisintegration: 1
 --- !u!1 &9084104759279898020
 GameObject:
   m_ObjectHideFlags: 0

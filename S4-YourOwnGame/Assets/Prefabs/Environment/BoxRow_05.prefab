@@ -169,8 +169,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.9, y: 0.9, z: 0.1}
-  m_Center: {x: 2.05, y: 0.45, z: -0.1}
+  m_Size: {x: 5.9, y: 0.9, z: 0.3}
+  m_Center: {x: 2.05, y: 0.45, z: -0.05}
 --- !u!65 &648412590686407708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -182,8 +182,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9, y: 0.9, z: 0.1}
-  m_Center: {x: -4.05, y: 0.45, z: -0.1}
+  m_Size: {x: 1.9, y: 0.9, z: 0.3}
+  m_Center: {x: -4.05, y: 0.45, z: -0.05}
 --- !u!114 &648412590686407709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnDeathFunctions: []
+  TriggerPlayerDeath: 1
+  TriggerCloneDisintegration: 1
 --- !u!1 &648412591074238283
 GameObject:
   m_ObjectHideFlags: 0

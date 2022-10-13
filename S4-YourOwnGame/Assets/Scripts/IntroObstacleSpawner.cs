@@ -7,7 +7,7 @@ using System.Linq;
 
 public class IntroObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] float ObstacleSpawnInterval = 60f;
+    [SerializeField] float ObstacleSpawnInterval = 120f;
     [SerializeField] int WalkObstacleSpawnCount = 10;
     [SerializeField] int JumpObstacleSpawnCount = 10;
 
@@ -59,16 +59,6 @@ public class IntroObstacleSpawner : MonoBehaviour
             Component.SetDeathHandlerFields(new GameObject[1] { gameObject });
         }
     }
-
-    //private void AddDeathHandler(GameObject[] Obstacles)
-    //{
-    //    foreach (GameObject Obstacle in Obstacles)
-    //    {
-    //        Obstacle.AddComponent<DeathHandler>();
-    //        DeathHandler Component = Obstacle.GetComponent<DeathHandler>();
-    //        Component.SetDeathHandlerFields(new GameObject[1] { gameObject });
-    //    }
-    //}
 
     public void OnPlayerDeath() => ResetSpawner();
 
