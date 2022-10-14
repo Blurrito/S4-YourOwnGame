@@ -94,7 +94,7 @@ public class IntroObstacleSpawner : MonoBehaviour
         {
             CancelInvoke(nameof(SpawnNextWalkObstacle));
             WalkPhaseEnded = true;
-            InvokeRepeating(nameof(SpawnNextJumpObstacle), 5, ObstacleSpawnInterval);
+            InvokeRepeating(nameof(SpawnNextJumpObstacle), 4.5f, ObstacleSpawnInterval);
         }
     }
 
