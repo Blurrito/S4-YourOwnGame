@@ -14,35 +14,34 @@ public class ButtonTrigger : MonoBehaviour
     [SerializeField] string[] TagNames;
 
     public bool IsPressed = false;
-    private List<GameObject> Actors = new List<GameObject>();
+    public List<string> Actors = new List<string>();
 
     public void OnCollisionEnter(Collision collision)
     {
-        Actors.RemoveAll(x => x == null);
-
-        if (!Actors.Contains(collision.gameObject))
+        if (!IsPressed && !Actors.Contains(collision.gameObject.name))
         {
-            Actors.Add(collision.gameObject);
-            if (!IsPressed)
+            if (HasObjectTagRestriction && TagNames != null)
             {
-                if (HasObjectTagRestriction && TagNames != null)
+                if (TagNames.Contains(collision.gameObject.tag))
                 {
-                    if (TagNames.Contains(collision.gameObject.tag))
-                        BeginButtonPress();
-                }
-                else
+                    Actors.Add(collision.gameObject.name);
                     BeginButtonPress();
+                }
+                        
+            }
+            else
+            {
+                Actors.Add(collision.gameObject.name);
+                BeginButtonPress();
             }
         }
     }
 
     public void OnCollisionExit(Collision collision)
     {
-        Actors.RemoveAll(x => x == null);
-
-        if (IsPressed && Actors.Contains(collision.gameObject))
+        if (IsPressed && Actors.Contains(collision.gameObject.name))
         {
-            Actors.Remove(collision.gameObject);
+            Actors.Remove(collision.gameObject.name);
             if (Actors.Count == 0 && DisableOnExit)
                 EndButtonPress();
         }

@@ -83,7 +83,8 @@ public class StateSaver : MonoBehaviour
 
             stateStore.buttonTrigger = new ButtonTriggerStore()
             {
-                isPressed = x.IsPressed
+                isPressed = x.IsPressed,
+                actors = x.Actors.ToList()
             };
         }
         else
@@ -120,7 +121,7 @@ public class StateSaver : MonoBehaviour
         {
             if (stateStore.buttonTrigger == null) return;
             ButtonTrigger x = (ButtonTrigger)component;
-
+            x.Actors = stateStore.buttonTrigger.actors.ToList();
             x.IsPressed = stateStore.buttonTrigger.isPressed;
             if (x.IsPressed)
             {

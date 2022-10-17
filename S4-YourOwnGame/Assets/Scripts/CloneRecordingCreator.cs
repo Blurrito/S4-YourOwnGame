@@ -62,7 +62,7 @@ public class CloneRecordingCreator : MonoBehaviour
 
         HudManager.instance.ActivateTimer(false);
         CloneManager.instance.PlayRecording(records);
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
     public void AddAnimationRecord(AnimationRecord animationRecord)

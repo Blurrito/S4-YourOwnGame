@@ -33,5 +33,6 @@ public record TransformStore
 public record ButtonTriggerStore
 {
     public bool isPressed;
+    public List<string> actors;
 }
 
