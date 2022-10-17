@@ -77,12 +77,17 @@ namespace StarterAssets
 		}
 
 		public void OnCancelRecord()
-        {
-			if (CloneRecordingCreator.instance == null) return;
+		{
+			if (CloneRecordingCreator.instance != null)
+			{
+				CloneRecordingCreator.instance.StopAndPlayRecording();
+				CloneManager.instance.ReturnControlToPlayer();
+			}
 
-			CloneRecordingCreator.instance.CancelRecording();
-			CloneManager.instance.ReturnControlToPlayer();
-        }
+			if (CloneRecordingPlayer.instance != null)
+			{
+				CloneRecordingPlayer.instance.KillClone();
+			}
+		}
 	}
-	
 }

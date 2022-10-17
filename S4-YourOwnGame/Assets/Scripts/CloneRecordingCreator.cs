@@ -56,11 +56,11 @@ public class CloneRecordingCreator : MonoBehaviour
         }
     }
 
-    void StopAndPlayRecording()
+    public void StopAndPlayRecording()
     {
         CloneManager.instance.SaveRecording(records.ToList());
-
         HudManager.instance.ActivateTimer(false);
+        StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
         CloneManager.instance.PlayRecording(records);
         Destroy(transform.parent.gameObject);
     }

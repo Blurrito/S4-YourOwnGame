@@ -14,6 +14,14 @@ public class CloneRecordingPlayer : MonoBehaviour
     [SerializeField, Range(0, 1), ] float footstepAudioVolume;
 
     [SerializeField] DisintegrationManager disintegrationManager;
+
+    static public CloneRecordingPlayer instance;
+
+    private void Start()
+    {
+        instance = this;
+    }
+
     void FixedUpdate()
     {
         if (records.Count == 0) return;
