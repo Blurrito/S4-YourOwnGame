@@ -12,7 +12,10 @@ public class CloneManager : MonoBehaviour
     [SerializeField] GameObject cloneEnvisionPrefab;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] CinemachineVirtualCamera virtualCamera;
+    [SerializeField] GameObject PlayerCameraRoot;
     [SerializeField] AudioListener audioListener;
+    [SerializeField] Animator EnterCloneRecordingAnimation;
+    [SerializeField] Animator ExitCloneRecordingAnimation;
 
     public static CloneManager instance;
 
@@ -31,37 +34,58 @@ public class CloneManager : MonoBehaviour
 
         if (FindObjectOfType<CloneRecordingPlayer>()) return;
 
-        playerInput.enabled = false;
-        virtualCamera.gameObject.SetActive(false);
-        audioListener.enabled = false;
+        if (EnterCloneRecordingAnimation != null)
+        {
+            SetPlayerActionMapStatus(false);
+            Animator ZoomInAnimator = virtualCamera.GetComponent<Animator>();
+            if (ZoomInAnimator != null)
+                ZoomInAnimator.SetTrigger("Active");
+            EnterCloneRecordingAnimation.SetTrigger("Active");
+        }
+    }
+
+    public void OnEndRecord() => SetPlayerActionMapStatus(true);
+
+    public void SwitchToClone()
+    {
+        SetPlayerControlStatus(false);
         GameObject newClone = Instantiate(cloneEnvisionPrefab, transform.position, transform.rotation);
     }
 
-    public void PlayRecording(List<TransformRecord> records)
+    public void SwitchToPlayer()
+    {
+        SetPlayerControlStatus(true);
+    }
+
+    public void PrepareRecordingPlayer(List<TransformRecord> records)
     {
         if (!canUseClones) return;
 
         StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
 
         transform.SetPositionAndRotation(records[0].position, records[0].rotation);
-        ReturnControlToPlayer();
+        SetPlayerControlStatus(true);
         
 
         GameObject replayingClone = Instantiate(clonePhysicalPrefab, protagonist.position, protagonist.rotation);
         replayingClone.GetComponent<CloneRecordingPlayer>().records = records;
     }
 
-    private void FixInput()
+    private void EnablePlayerInput() => playerInput.enabled = true;
+
+    public void SetPlayerControlStatus(bool IsEnabled)
     {
-        playerInput.enabled = true;
+        PlayerCameraRoot.SetActive(IsEnabled);
+        audioListener.enabled = IsEnabled;
+        virtualCamera.gameObject.SetActive(IsEnabled);
+        if (IsEnabled)
+            Invoke(nameof(EnablePlayerInput), 0.01f);
     }
 
-    public void ReturnControlToPlayer()
+    public void SetPlayerActionMapStatus(bool IsEnabled)
     {
-        audioListener.enabled = true;
-        virtualCamera.gameObject.SetActive(true);
-        playerInput.enabled = false;
-        Invoke(nameof(FixInput), 0.01f);
+        if (playerInput != null)
+            playerInput.enabled = IsEnabled;
     }
 
     public void SaveRecording(List<TransformRecord> recording)
@@ -79,7 +103,7 @@ public class CloneManager : MonoBehaviour
         {
             if (CloneRecordingCreator.instance != null)
             {
-                CloneRecordingCreator.instance.CancelRecording();
+                CloneRecordingCreator.instance.EndRecording(false);
             }
 
             var clonePlayer = FindObjectOfType<CloneRecordingPlayer>();
@@ -88,7 +112,9 @@ public class CloneManager : MonoBehaviour
                 Destroy(clonePlayer.gameObject);
             }
 
-            PlayRecording(previousCloneRecording.ToList());
+            PrepareRecordingPlayer(previousCloneRecording.ToList());
+            CloneRecordingPlayer Player = FindObjectOfType<CloneRecordingPlayer>();
+            Player.Play();
         }
         else
         {

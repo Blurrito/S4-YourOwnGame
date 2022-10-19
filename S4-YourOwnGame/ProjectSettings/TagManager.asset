@@ -14,14 +14,14 @@ TagManager:
   - Water
   - UI
   - PlayerClone
+  - Ignore Lighting
+  - PostProcessing
+  - Cam
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Obj_Player
+  - Obj_Clone
+  - Obj_Global
+  - Env
   - 
   - 
   - 

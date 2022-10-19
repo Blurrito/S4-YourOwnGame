@@ -1655,7 +1655,7 @@ MonoBehaviour:
   GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 30721
   disintegrationSound: {fileID: 8300000, guid: e9566600905d7644d9a749690f7b3c33, type: 3}
   recordingPlayer: {fileID: -7303246554967096446}
   maxTicksWithoutFloor: 5

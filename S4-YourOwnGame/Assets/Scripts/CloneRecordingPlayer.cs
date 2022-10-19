@@ -17,14 +17,18 @@ public class CloneRecordingPlayer : MonoBehaviour
 
     static public CloneRecordingPlayer instance;
 
+    private bool StartPlayback = false;
+
     private void Start()
     {
         instance = this;
     }
 
+    public void Play() => StartPlayback = true;
+
     void FixedUpdate()
     {
-        if (records.Count == 0) return;
+        if (records.Count == 0 || !StartPlayback) return;
 
         disintegrationManager.CheckGroundedEqual(records[0].IsGrounded);
 
@@ -47,6 +51,7 @@ public class CloneRecordingPlayer : MonoBehaviour
 
         if (records.Count == 0)
         {
+            StartPlayback = false;
             KillClone();
         }
     }

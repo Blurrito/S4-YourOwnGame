@@ -16,20 +16,36 @@ public class CloneRecordingCreator : MonoBehaviour
     List<GameObject> touchingObjects = new();
 
     [SerializeField] ThirdPersonController ThirdPersonController;
+    [SerializeField] PlayerInput CloneInput;
+    [SerializeField] Animator EnterCloneRecordingAnimation;
+    [SerializeField] Animator ExitCloneRecordingAnimation;
+
+    private bool RecordingStarted = false;
+    private bool RecordingSaved = false;
+
+    public void StartCountdown()
+    {
+        Invoke(nameof(DecreaseTimer), 1);
+        HudManager.instance.SetTimer(RecordingTimeLeft);
+        HudManager.instance.ActivateTimer(true);
+        RecordingStarted = true;
+        SetCloneActionMapStatus(true);
+    }
 
     void OnEnable()
     {
         StateManager.instance.SaveAllStates(ObjectStateStamp.recording);
         instance = this;
         records = new List<TransformRecord>();
-        Invoke(nameof(DecreaseTimer), 1);
-        HudManager.instance.SetTimer(RecordingTimeLeft);
-        HudManager.instance.ActivateTimer(true);
+
+        if (EnterCloneRecordingAnimation != null)
+            EnterCloneRecordingAnimation.SetTrigger("Active");
     }
 
     void FixedUpdate()
     {
-        records.Add(new TransformRecord(transform, ThirdPersonController.Grounded));
+        if (RecordingStarted)
+            records.Add(new TransformRecord(transform, ThirdPersonController.Grounded));
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -46,7 +62,7 @@ public class CloneRecordingCreator : MonoBehaviour
     {
         if (RecordingTimeLeft == 0)
         {
-            StopAndPlayRecording();
+            EndRecording(true);
         }
         else
         {
@@ -56,13 +72,33 @@ public class CloneRecordingCreator : MonoBehaviour
         }
     }
 
-    public void StopAndPlayRecording()
+    public void EndRecording(bool SaveRecording)
     {
-        CloneManager.instance.SaveRecording(records.ToList());
+        RecordingSaved = SaveRecording;
+        if (ExitCloneRecordingAnimation != null)
+            ExitCloneRecordingAnimation.SetTrigger("Active");
+    }
+
+    public void StopRecording()
+    {
+        SetCloneActionMapStatus(false);
+        RecordingStarted = false;
+        if (RecordingSaved)
+            CloneManager.instance.SaveRecording(records.ToList());
         HudManager.instance.ActivateTimer(false);
-        StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
-        CloneManager.instance.PlayRecording(records);
+    }
+
+    public void DestroyClone()
+    {
+        transform.parent.position = new Vector3(0, -1000, 0);
         Destroy(transform.parent.gameObject);
+    }
+
+    public void LoadRecording()
+    {
+        StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
+        if (RecordingSaved)
+            CloneManager.instance.PrepareRecordingPlayer(records);
     }
 
     public void AddAnimationRecord(AnimationRecord animationRecord)
@@ -72,11 +108,9 @@ public class CloneRecordingCreator : MonoBehaviour
         records[^1].animationRecords.Add(animationRecord);
     }
 
-    public void CancelRecording()
+    private void SetCloneActionMapStatus(bool IsEnabled)
     {
-        HudManager.instance.ActivateTimer(false);
-        StateManager.instance.LoadAllStates(ObjectStateStamp.recording);
-        transform.parent.position = new Vector3(0, -1000, 0);
-        Destroy(transform.parent.gameObject);
+        if (CloneInput != null)
+            CloneInput.enabled = IsEnabled;
     }
 }

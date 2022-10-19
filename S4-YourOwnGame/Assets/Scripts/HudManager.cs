@@ -11,6 +11,9 @@ public class HudManager : MonoBehaviour
     [SerializeField] GameObject recordTimeBackground;
     [SerializeField] TextMeshProUGUI recordTimeText;
 
+    [SerializeField] Animator EnterCloneRecordingAnimator;
+    [SerializeField] Animator ExitCloneRecordingAnimator;
+
     private void Start()
     {
         instance = this;
@@ -25,5 +28,11 @@ public class HudManager : MonoBehaviour
     public void ActivateTimer(bool toggle)
     {
         recordTimeBackground.SetActive(toggle);
+    }
+
+    public void PlayExitCloneRecordingAnimation()
+    {
+        if (ExitCloneRecordingAnimator != null)
+            ExitCloneRecordingAnimator.SetTrigger("Active");
     }
 }

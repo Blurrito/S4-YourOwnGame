@@ -18,8 +18,8 @@ public class DeathHandler : MonoBehaviour
     {
         if (CloneRecordingCreator.instance != null)
         {
-            CloneRecordingCreator.instance.CancelRecording();
-            CloneManager.instance.ReturnControlToPlayer();
+            CloneRecordingCreator.instance.EndRecording(false);
+            //CloneManager.instance.SetPlayerControlStatus();
         }
     }
 
