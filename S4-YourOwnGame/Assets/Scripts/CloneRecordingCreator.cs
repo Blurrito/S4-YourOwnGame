@@ -8,6 +8,8 @@ using System.Linq;
 
 public class CloneRecordingCreator : MonoBehaviour
 {
+    public static bool shouldHaveTimer = true;
+
     List<TransformRecord> records = new List<TransformRecord>();
     [SerializeField] int RecordingTimeLeft = 30;
 
@@ -25,9 +27,12 @@ public class CloneRecordingCreator : MonoBehaviour
 
     public void StartCountdown()
     {
-        Invoke(nameof(DecreaseTimer), 1);
-        HudManager.instance.SetTimer(RecordingTimeLeft);
-        HudManager.instance.ActivateTimer(true);
+        if (shouldHaveTimer)
+        {
+            Invoke(nameof(DecreaseTimer), 1);
+            HudManager.instance.SetTimer(RecordingTimeLeft);
+            HudManager.instance.ActivateTimer(true);
+        }
         RecordingStarted = true;
         SetCloneActionMapStatus(true);
     }

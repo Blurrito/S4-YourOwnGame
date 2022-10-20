@@ -81,7 +81,6 @@ namespace StarterAssets
 			if (CloneRecordingCreator.instance != null)
 			{
 				CloneRecordingCreator.instance.EndRecording(true);
-				//CloneManager.instance.ReturnControlToPlayer();
 			}
 
 			if (CloneRecordingPlayer.instance != null)
