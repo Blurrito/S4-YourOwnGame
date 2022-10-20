@@ -497,7 +497,8 @@ GameObject:
   - component: {fileID: 5414075641658151679}
   - component: {fileID: 5414075641658151678}
   - component: {fileID: 5414075641658151677}
-  - component: {fileID: 5414075641658151676}
+  - component: {fileID: 7830635648581019708}
+  - component: {fileID: -5530901827948653056}
   m_Layer: 0
   m_Name: BoxRow_04
   m_TagString: Untagged
@@ -514,7 +515,7 @@ Transform:
   m_GameObject: {fileID: 5414075641658151674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5414075641043749334}
@@ -554,7 +555,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5414075641658151674}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.9, y: 0.9, z: 0.3}
@@ -567,12 +568,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5414075641658151674}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.9, y: 0.9, z: 0.3}
   m_Center: {x: 3.05, y: 0.45, z: -0.05}
---- !u!114 &5414075641658151676
+--- !u!114 &7830635648581019708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414075641658151674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72de339177f2b6e419e196a1a83c385b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5530901827948653056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -584,7 +597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db21db13e809e74baba08656d4553f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDeathFunctions: []
+  OnDeathFunctions:
+  - {fileID: 0}
   TriggerPlayerDeath: 1
   TriggerCloneDisintegration: 1
 --- !u!1 &9191179001580016197

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SubtitlesTrigger : MonoBehaviour
 {
-    [SerializeField] DialogueRecord dialogue;
+    [SerializeField] string DialogueName = string.Empty;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +16,6 @@ public class SubtitlesTrigger : MonoBehaviour
     [ContextMenu("Add to queue")]
     public void AddtoDialogueQueue()
     {
-        DialogueManager.instance.AddDialogueToQueue(dialogue);
+        DialogueManager.instance.AddDialogueToQueue(DialogueName);
     }
 }

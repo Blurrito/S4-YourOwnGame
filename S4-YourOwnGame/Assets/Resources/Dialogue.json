@@ -1,0 +1,14 @@
+{
+    "Languages": [
+        {
+            "Name": "en",
+            "DialogueLines": [
+                {
+                    "Name": "DBG_00",
+                    "String": "Hello World!",
+                    "ScreenTime": 5
+                }
+            ]
+        }
+    ]
+}

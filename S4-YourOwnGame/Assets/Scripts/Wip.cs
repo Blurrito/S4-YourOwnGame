@@ -8,30 +8,55 @@ public class Wip : MonoBehaviour
 {
     [SerializeField] int ObstacleCount = 10;
     [SerializeField] GameObject[] Obstacles;
+    [SerializeField] float OnSegmentStartInterval = 1f;
 
+    private GameObject[] ObstacleOrder;
     private int PassedObstacles = 0;
+    private bool SegmentEnded = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        RandomizeArray(Obstacles, out ObstacleOrder, ObstacleCount);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnSegmentStart()
     {
-
+        SegmentEnded = false;
     }
 
     public void OnObstaclePass()
     {
-
+        if (++PassedObstacles == ObstacleCount)
+            OnSegmentEnd();
+        else
+            InstantiateObstacle();
     }
-
-    private void OnObstacleFail()
+    
+    public void OnObstacleFail()
     {
-
+        if (!SegmentEnded)
+            ResetSegment();
     }
+
+    private void OnSegmentEnd()
+    {
+        if (!SegmentEnded)
+        {
+            SegmentEnded = true;
+            Wip3 Manager = gameObject.GetComponentInParent<Wip3>();
+            if (Manager != null)
+                Manager.OnSegmentPass();
+        }
+    }
+
+    private void ResetSegment()
+    {
+        SegmentEnded = true;
+        RandomizeArray(Obstacles, out ObstacleOrder, ObstacleCount);
+        Invoke(nameof(OnSegmentStart), OnSegmentStartInterval);
+    }
+
+    private void InstantiateObstacle() => Instantiate(ObstacleOrder[PassedObstacles], gameObject.transform, false);
 
     private void RandomizeArray<T>(T[] InputArray, out T[] OutputArray, int OutputArraySize) where T : class
     {
