@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class TriggerAnimationEffect : TriggerEffect
 {
-    [SerializeField] Animator Animator;
     [SerializeField] string PropertyName = string.Empty;
 
+    Animator Animator = null;
     private bool IsPlaying = false;
+
+    private void Start()
+    {
+        Animator = gameObject.GetComponent<Animator>();
+    }
 
     public override void EndEffect()
     {
@@ -20,10 +25,7 @@ public class TriggerAnimationEffect : TriggerEffect
 
     public override void StartEffect()
     {
-        if (!IsPlaying)
-        {
-            IsPlaying = true;
-            Animator.SetBool(PropertyName, true);
-        }
+        IsPlaying = !IsPlaying;
+        Animator.SetBool(PropertyName, IsPlaying);
     }
 }

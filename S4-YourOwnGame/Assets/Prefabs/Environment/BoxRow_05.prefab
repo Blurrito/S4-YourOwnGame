@@ -110,7 +110,6 @@ GameObject:
   - component: {fileID: 648412590686407707}
   - component: {fileID: 648412590686407708}
   - component: {fileID: 7084589766898450592}
-  - component: {fileID: -4964759454031655292}
   m_Layer: 0
   m_Name: BoxRow_05
   m_TagString: Untagged
@@ -126,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648412590686407711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -197,22 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72de339177f2b6e419e196a1a83c385b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-4964759454031655292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648412590686407711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db21db13e809e74baba08656d4553f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnDeathFunctions:
-  - {fileID: 0}
-  TriggerPlayerDeath: 1
-  TriggerCloneDisintegration: 1
 --- !u!1 &648412591074238283
 GameObject:
   m_ObjectHideFlags: 0
