@@ -5,8 +5,8 @@ using UnityEngine;
 public class DeathHandler : MonoBehaviour
 {
     [SerializeField] GameObject[] OnDeathFunctions;
-    [SerializeField] bool TriggerPlayerDeath = true;
-    [SerializeField] bool TriggerCloneDisintegration = true;
+    [SerializeField] public bool TriggerPlayerDeath = true;
+    [SerializeField] public bool TriggerCloneDisintegration = true;
 
     public void SetDeathHandlerFields(GameObject[] OnDeathFunctions) => this.OnDeathFunctions = OnDeathFunctions;
 

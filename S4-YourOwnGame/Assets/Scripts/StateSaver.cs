@@ -64,8 +64,11 @@ public class StateSaver : MonoBehaviour
             {
                 animationName = x.GetCurrentAnimatorStateInfo(0).shortNameHash,
                 parameters = parameters,
-                timeIndex = x.GetCurrentAnimatorStateInfo(0).normalizedTime
+                timeIndex = x.GetCurrentAnimatorStateInfo(0).normalizedTime,
             };
+
+            if (component.GetComponent<TriggerAnimationEffect>()) 
+                stateStore.animator.isPlaying = component.GetComponent<TriggerAnimationEffect>().IsPlaying;
         }
         else if (t == typeof(Transform))
         {
@@ -87,6 +90,16 @@ public class StateSaver : MonoBehaviour
                 actors = x.Actors.ToList()
             };
         }
+        else if (t == typeof(ToggleTrigger))
+        {
+            ToggleTrigger x = (ToggleTrigger)component;
+
+            stateStore.toggleTrigger = new ToggleTriggerStore()
+            {
+                state = x.state,
+                actors = x.Actors.ToList()
+            };
+        }
         else
         {
             Debug.LogError($"Saving state of component '{component.GetType().Name}' not implemented yet!");
@@ -103,7 +116,10 @@ public class StateSaver : MonoBehaviour
         {
             if (stateStore.animator == null) return;
             Animator a = (Animator)component;
-            
+
+            if (component.GetComponent<TriggerAnimationEffect>())
+                component.GetComponent<TriggerAnimationEffect>().IsPlaying = stateStore.animator.isPlaying;
+
             foreach (var param in stateStore.animator.parameters)
             {
                 a.SetBool(param.name, param.value);
@@ -123,14 +139,17 @@ public class StateSaver : MonoBehaviour
             ButtonTrigger x = (ButtonTrigger)component;
             x.Actors = stateStore.buttonTrigger.actors.ToList();
             x.IsPressed = stateStore.buttonTrigger.isPressed;
-            if (x.IsPressed)
-            {
-                x.TriggerEffect();
-            }
-            else
-            {
-                x.RevertEffect();
-            }
+        }
+        else if (t == typeof(ToggleTrigger))
+        {
+            if (stateStore.toggleTrigger == null) return;
+            ToggleTrigger x = (ToggleTrigger)component;
+
+            x.Actors = stateStore.toggleTrigger.actors.ToList();
+            x.state = stateStore.toggleTrigger.state;
+
+            x.toggleOnState.SetActive(x.state);
+            x.toggleOffState.SetActive(!x.state);
         }
         else
         {

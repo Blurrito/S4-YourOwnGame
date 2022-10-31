@@ -16,36 +16,43 @@ public class ButtonTrigger : MonoBehaviour
     public bool IsPressed = false;
     public List<string> Actors = new List<string>();
 
-    public void OnCollisionEnter(Collision collision)
+    public void HandleEnter(GameObject collider)
     {
-        if (!IsPressed && !Actors.Contains(collision.gameObject.name))
+        if (!IsPressed && !Actors.Contains(collider.name))
         {
             if (HasObjectTagRestriction && TagNames != null)
             {
-                if (TagNames.Contains(collision.gameObject.tag))
+                if (TagNames.Contains(collider.tag))
                 {
-                    Actors.Add(collision.gameObject.name);
+                    Actors.Add(collider.name);
                     BeginButtonPress();
                 }
-                        
+
             }
             else
             {
-                Actors.Add(collision.gameObject.name);
+                Actors.Add(collider.name);
                 BeginButtonPress();
             }
         }
     }
 
-    public void OnCollisionExit(Collision collision)
+    public void OnCollisionEnter(Collision collision) => HandleEnter(collision.gameObject);
+    public void OnTriggerEnter(Collider other) => HandleEnter(other.gameObject);
+
+
+    public void HandleExit(GameObject collider)
     {
-        if (IsPressed && Actors.Contains(collision.gameObject.name))
+        if (IsPressed && Actors.Contains(collider.name))
         {
-            Actors.Remove(collision.gameObject.name);
+            Actors.Remove(collider.name);
             if (Actors.Count == 0 && DisableOnExit)
                 EndButtonPress();
         }
     }
+
+    public void OnCollisionExit(Collision collision) => HandleExit(collision.gameObject);
+    public void OnTriggerExit(Collider other) => HandleExit(other.gameObject);
 
     public void TriggerEffect()
     {

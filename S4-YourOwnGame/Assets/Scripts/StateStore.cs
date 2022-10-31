@@ -10,6 +10,7 @@ public class StateStore
     public AnimatorStore animator;
     public TransformStore transform;
     public ButtonTriggerStore buttonTrigger;
+    public ToggleTriggerStore toggleTrigger;
 
     public StateStore(ObjectStateStamp stateStamp)
     {
@@ -22,6 +23,7 @@ public record AnimatorStore
     public List<(string name, bool value)> parameters;
     public int animationName;
     public float timeIndex;
+    public bool isPlaying;
 }
 
 public record TransformStore
@@ -36,3 +38,8 @@ public record ButtonTriggerStore
     public List<string> actors;
 }
 
+public record ToggleTriggerStore
+{
+    public bool state;
+    public List<string> actors;
+}

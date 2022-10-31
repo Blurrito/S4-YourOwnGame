@@ -107,7 +107,7 @@ public class CloneManager : MonoBehaviour
             }
 
             var clonePlayer = FindObjectOfType<CloneRecordingPlayer>();
-            if (clonePlayer != null)
+            if (CloneRecordingPlayer.instance != null)
             {
                 Destroy(clonePlayer.gameObject);
             }

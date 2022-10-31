@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class Tutorial_Clone : MonoBehaviour
@@ -12,12 +13,25 @@ public class Tutorial_Clone : MonoBehaviour
     [SerializeField] string retryCloneActionName;
 
     [SerializeField] ButtonTrigger firstButton;
+    [SerializeField] ButtonTrigger EnterSecondRoomTrigger;
+    [SerializeField] ButtonTrigger secondButton;
+    [SerializeField] ButtonTrigger midBridgeTrigger;
+    [SerializeField] ButtonTrigger bottomPitTrigger;
+
+    [SerializeField] Rigidbody firstBridgePart;
+    [SerializeField] Rigidbody secondBridgePart;
+
+    [SerializeField] DeathHandler bottomPitDeath;
+
+    [SerializeField] GameObject BridgeNoCheatBarrier;
 
     InputAction createCloneAction;
     InputAction cancelCloneAction;
     InputAction retryCloneAction;
 
     private bool tutorialStarted = false;
+
+    private bool pressedSecondButtonDuringRecording = false;
 
     private void Start()
     {
@@ -30,6 +44,11 @@ public class Tutorial_Clone : MonoBehaviour
         retryCloneAction.Disable();
 
         CloneRecordingCreator.shouldHaveTimer = false;
+    }
+
+    private void Update()
+    {
+        if (secondButton.IsPressed && CloneRecordingCreator.instance != null) pressedSecondButtonDuringRecording = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,7 +66,7 @@ public class Tutorial_Clone : MonoBehaviour
         yield return new WaitUntil(() => DialogueManager.instance != null);
 
         //[Subtitle/voiceline: "something something enter mindspace something something"]
-        Debug.Log("voice: enter mindspace");
+        DialogueManager.instance.AddDialogueToQueue("");
 
         //{Wait until subtitle/voiceline finished}
         //TODO
@@ -72,7 +91,7 @@ public class Tutorial_Clone : MonoBehaviour
         Debug.Log("voice: kill that clone");
 
         //[Show popup: press X to dispose of the clone manually]
-        GameObject cancelClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(cancelCloneAction)}] to cancel a clone.");
+        GameObject cancelClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(cancelCloneAction)}] to exit your mindspace.");
 
         //+ ability: press X
         cancelCloneAction.Enable();
@@ -85,34 +104,70 @@ public class Tutorial_Clone : MonoBehaviour
         Debug.Log("voice: the clone will repeat your mindspace actions and movements. Go through the door to advance.");
 
         //{Wait until player enters next room}
-        //TODO
+        yield return new WaitUntil(() => EnterSecondRoomTrigger.IsPressed);
+        Destroy(EnterSecondRoomTrigger.gameObject);
 
-        //StartCoroutine(StartRetryAbilityTutorial());
+        CloneRecordingCreator.shouldHaveTimer = true;
+
+        StartCoroutine(StartRetryAbilityTutorial());
     }
 
     private IEnumerator StartRetryAbilityTutorial()
     {
         //[Subtitle/voiceline: See that button over there? It extends a bridge. Doesn't stay extended though.]
         Debug.Log("Send a clone to the button to extend the bridge");
-        return null;
+
         //[Show popup: press C to create a clone]
+        GameObject createClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(createCloneAction)}] to create a clone.");
 
         //{Wait until player creates clone}
-        //[Spawn the clone and give control, also show the timer]
+        yield return new WaitUntil(() => CloneRecordingCreator.instance != null);
+        Destroy(createClonePopup);
 
         //[Subtitle/voiceline: The clone will automatically disintegrate after a few seconds. You can still dispose of it earlier if you want to.]
+        Debug.Log("The clone will automatically disintegrate after a few seconds. You can still dispose of it earlier if you want to.");
 
-        //10
+        secondStage:
         //{Wait until player back in control of protagonist}
+        yield return new WaitUntil(() => CloneRecordingPlayer.instance != null);
+
         //<if button not pressed during recording> => 
-        //	[Subtitle/voiceline: The bridge is not going to open itself. Create a new clone and try again]
-        //	GOTO 10
-        //<else (if button pressed during recording)> =>
-        //	[Somehow ensure player does not make it to the other side (for example, the bridge breaking)]
-        //	[Subtitle/voiceline: You did not make it? Doesn't matter. You can just use the same clone and try again]
-        //	[Show popup: Press R to retry with the last recording]
-        //	+ ability: press R
-        //	(This time, bridge stays normal and player can advance)
+        if (!pressedSecondButtonDuringRecording)
+        {
+            //	[Subtitle/voiceline: The bridge is not going to open itself. Create a new clone and try again]
+            Debug.Log("create a new clone because you failed");
+            yield return new WaitUntil(() => CloneRecordingCreator.instance != null);
+            goto secondStage;
+        }
+        else //<else (if button pressed during recording)> =>
+        {
+            bottomPitDeath.TriggerPlayerDeath = false;
+
+            //[Somehow ensure player does not make it to the other side (for example, the bridge breaking)]
+            midBridgeTrigger.gameObject.SetActive(true);
+            yield return new WaitUntil(() => midBridgeTrigger.IsPressed);
+            Destroy(midBridgeTrigger.gameObject);
+            firstBridgePart.isKinematic = false;
+            secondBridgePart.isKinematic = false;
+            bottomPitTrigger.gameObject.SetActive(true);
+
+            yield return new WaitUntil(() => bottomPitTrigger.IsPressed);
+            yield return new WaitForSeconds(3);
+            Debug.Log("Voiceline: Well that wasn't supposed to happen, you're going to have to try again.");
+            Destroy(BridgeNoCheatBarrier);
+
+            //	[Show popup: Press R to retry with the last recording]
+            GameObject retryClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(retryCloneAction)}] to retry with the latest clone recording.");
+
+            //+ ability: press R
+            retryCloneAction.Enable();
+
+            yield return new WaitUntil(() => !bottomPitTrigger.IsPressed);
+            bottomPitDeath.TriggerPlayerDeath = true;
+            firstBridgePart.isKinematic = true;
+            secondBridgePart.isKinematic = true;
+            Destroy(retryClonePopup);
+        }
     }
 
     private string GetKeyNameForAction(InputAction inputAction)

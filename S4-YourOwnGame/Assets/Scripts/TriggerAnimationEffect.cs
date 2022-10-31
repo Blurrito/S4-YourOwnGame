@@ -7,7 +7,7 @@ public class TriggerAnimationEffect : TriggerEffect
     [SerializeField] string PropertyName = string.Empty;
 
     Animator Animator = null;
-    private bool IsPlaying = false;
+    public bool IsPlaying = false;
 
     private void Start()
     {
