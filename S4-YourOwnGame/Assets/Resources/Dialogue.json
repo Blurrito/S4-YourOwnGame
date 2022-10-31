@@ -6,32 +6,38 @@
                 {
                     "Name": "DBG_00",
                     "String": "Hello World!",
-                    "ScreenTime": 5
+                    "ScreenTime": 5,
+                    "AudioClip": ""
                 },
                 {
                     "Name": "Lvl_01_01_Phase01Start",
                     "String": "Initiating phase 1. Avoid all incoming obstacles. Making contact will result in failure.",
-                    "ScreenTime": 3.0
+                    "ScreenTime": 3.0,
+                    "AudioClip": ""
                 },
                 {
                     "Name": "Lvl_01_01_Phase02Start",
                     "String": "Initiating phase 2. Scale all incoming obstacles. Making contact will result in failure.",
-                    "ScreenTime": 3.0
+                    "ScreenTime": 3.0,
+                    "AudioClip": ""
                 },
                 {
                     "Name": "Lvl_01_01_PhaseEndFailure",
                     "String": "Subject made contact with obstacle. Test failed.",
-                    "ScreenTime": 3.0
+                    "ScreenTime": 3.0,
+                    "AudioClip": ""
                 },
                 {
                     "Name": "Lvl_01_01_PhaseEndSuccess",
                     "String": "Test passed.",
-                    "ScreenTime": 3.0
+                    "ScreenTime": 3.0,
+                    "AudioClip": ""
                 },
                 {
                     "Name": "Lvl_01_01_TestEndSuccess",
                     "String": "Course cleared, please proceed to the next room.",
-                    "ScreenTime": 3.0
+                    "ScreenTime": 3.0,
+                    "AudioClip": ""
                 }
             ]
         }

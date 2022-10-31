@@ -9,6 +9,7 @@ public class Dialogue
     public string Name;
     public string String;
     public float ScreenTime;
+    public string AudioClip;
 
     public Dialogue() { }
 }

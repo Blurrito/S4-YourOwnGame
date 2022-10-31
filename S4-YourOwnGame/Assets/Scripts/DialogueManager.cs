@@ -15,9 +15,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Transform popupContainer;
     [SerializeField] TextAsset DialogueFile;
     [SerializeField] string SelectedLanguage;
-    //[SerializeField] float secondsBetweenDialogue = 5f;
 
-    //List<DialogueRecord> dialogueQueue = new();
     List<Dialogue> Queue = new();
     DialogueFile Text;
 
@@ -27,7 +25,6 @@ public class DialogueManager : MonoBehaviour
             Text = JsonUtility.FromJson<DialogueFile>(DialogueFile.text);
         instance = this;
         StartCoroutine(DisplayDialogue());
-        //StartCoroutine(ContinueQueue());
     }
 
     public void AddDialogueToQueue(string DialogueName)
@@ -37,32 +34,6 @@ public class DialogueManager : MonoBehaviour
             Queue.Add(Line);
     }
 
-    //PROBLEM: WaitForSeconds is not accurate at values below 1.
-    //IEnumerator ContinueQueue()
-    //{
-    //    yield return new WaitUntil(() => dialogueQueue.Any());
-
-    //    float timeBetweenCharacters = dialogueQueue[0].typingTimeInSeconds / dialogueQueue[0].text.Length;
-    //    Debug.Log(timeBetweenCharacters);
-    //    AudioSource.PlayClipAtPoint(dialogueQueue[0].audio, Camera.main.transform.position);
-
-    //    foreach (char character in dialogueQueue[0].text)
-    //    {
-    //        subtitleText.text += character;
-    //        yield return new WaitForSeconds(timeBetweenCharacters);
-    //    }
-
-    //    yield return new WaitForSecondsRealtime(dialogueQueue[0].remainTimeInSeconds);
-
-    //    subtitleText.text = "";
-
-    //    yield return new WaitForSecondsRealtime(secondsBetweenDialogue);
-
-    //    dialogueQueue.RemoveAt(0);
-
-    //    StartCoroutine(ContinueQueue());
-    //}
-
     private IEnumerator DisplayDialogue()
     {
         yield return new WaitUntil(() => Queue.Any());
@@ -71,6 +42,8 @@ public class DialogueManager : MonoBehaviour
         while (Queue.Count > 0)
         {
             subtitleText.text = Queue[0].String;
+            if (Queue[0].AudioClip != string.Empty)
+                AudioManager.instance.PlayAudioClip(Queue[0].AudioClip);
             yield return new WaitForSecondsRealtime(Queue[0].ScreenTime);
             Queue.RemoveAt(0);
         }
