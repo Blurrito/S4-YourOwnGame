@@ -18,7 +18,7 @@ public class CloneRecordingCreator : MonoBehaviour
     List<GameObject> touchingObjects = new();
 
     [SerializeField] ThirdPersonController ThirdPersonController;
-    [SerializeField] PlayerInput CloneInput;
+    [SerializeField] public PlayerInput CloneInput;
     [SerializeField] Animator EnterCloneRecordingAnimation;
     [SerializeField] Animator ExitCloneRecordingAnimation;
 

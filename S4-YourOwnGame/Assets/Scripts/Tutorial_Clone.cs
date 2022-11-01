@@ -66,10 +66,7 @@ public class Tutorial_Clone : MonoBehaviour
         yield return new WaitUntil(() => DialogueManager.instance != null);
 
         //[Subtitle/voiceline: "something something enter mindspace something something"]
-        DialogueManager.instance.AddDialogueToQueue("");
-
-        //{Wait until subtitle/voiceline finished}
-        //TODO
+        DialogueManager.instance.AddDialogueToQueue("CloneTutorial_EnterMindspace");
 
         //[Show popup: press C to create a clone]
         GameObject createClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(createCloneAction)}] to create a clone.");
@@ -82,13 +79,13 @@ public class Tutorial_Clone : MonoBehaviour
         Destroy(createClonePopup);
 
         //[Subtitle/voiceline: Move to the button with the clone]
-        Debug.Log("voice: move to button");
+        DialogueManager.instance.AddDialogueToQueue("CloneTutorial_MoveToButton");
 
         //{Wait until player (still in clone character) touches button, door opens}
         yield return new WaitUntil(() => firstButton.IsPressed);
 
         //[Subtitle/voiceline: Dispose of the clone]
-        Debug.Log("voice: kill that clone");
+        DialogueManager.instance.AddDialogueToQueue("CloneTutorial_DisposeOfClone");
 
         //[Show popup: press X to dispose of the clone manually]
         GameObject cancelClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(cancelCloneAction)}] to exit your mindspace.");
@@ -96,12 +93,15 @@ public class Tutorial_Clone : MonoBehaviour
         //+ ability: press X
         cancelCloneAction.Enable();
 
+        yield return new WaitForSeconds(0.5f);
+        CloneRecordingCreator.instance.GetComponent<StarterAssets.ThirdPersonController>().enabled = false;
+
         //[Wait until player presses X, then destroy hint popup]
         yield return new WaitUntil(() => CloneRecordingPlayer.instance != null);
         Destroy(cancelClonePopup);
 
-        //[Subtitle/voiceline: The clone will now repeats its movements, go through the door once the clone opens it.]
-        Debug.Log("voice: the clone will repeat your mindspace actions and movements. Go through the door to advance.");
+        //[Subtitle/voiceline: The clone will now repeat its movements, go through the door once the clone opens it.]
+        DialogueManager.instance.AddDialogueToQueue("CloneTutorial_ExplainReplay");
 
         //{Wait until player enters next room}
         yield return new WaitUntil(() => EnterSecondRoomTrigger.IsPressed);
@@ -115,7 +115,7 @@ public class Tutorial_Clone : MonoBehaviour
     private IEnumerator StartRetryAbilityTutorial()
     {
         //[Subtitle/voiceline: See that button over there? It extends a bridge. Doesn't stay extended though.]
-        Debug.Log("Send a clone to the button to extend the bridge");
+        DialogueManager.instance.AddDialogueToQueue("CloneTutorial_PressButtonToOpenBridge");
 
         //[Show popup: press C to create a clone]
         GameObject createClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(createCloneAction)}] to create a clone.");
@@ -125,7 +125,7 @@ public class Tutorial_Clone : MonoBehaviour
         Destroy(createClonePopup);
 
         //[Subtitle/voiceline: The clone will automatically disintegrate after a few seconds. You can still dispose of it earlier if you want to.]
-        Debug.Log("The clone will automatically disintegrate after a few seconds. You can still dispose of it earlier if you want to.");
+        DialogueManager.instance.AddDialogueToQueue("CloneTutorial_AutomaticDisintegration");
 
         secondStage:
         //{Wait until player back in control of protagonist}
@@ -135,7 +135,7 @@ public class Tutorial_Clone : MonoBehaviour
         if (!pressedSecondButtonDuringRecording)
         {
             //	[Subtitle/voiceline: The bridge is not going to open itself. Create a new clone and try again]
-            Debug.Log("create a new clone because you failed");
+            DialogueManager.instance.AddDialogueToQueue("CloneTutorial_CreateNewCloneToTryAgain");
             yield return new WaitUntil(() => CloneRecordingCreator.instance != null);
             goto secondStage;
         }
@@ -153,7 +153,7 @@ public class Tutorial_Clone : MonoBehaviour
 
             yield return new WaitUntil(() => bottomPitTrigger.IsPressed);
             yield return new WaitForSeconds(3);
-            Debug.Log("Voiceline: Well that wasn't supposed to happen, you're going to have to try again.");
+            DialogueManager.instance.AddDialogueToQueue("CloneTutorial_RetryCloneRecording");
             Destroy(BridgeNoCheatBarrier);
 
             //	[Show popup: Press R to retry with the last recording]
