@@ -8,6 +8,11 @@ public class StateManager : MonoBehaviour
 
     private void Start()
     {
+        if (instance != null)
+        {
+            Debug.LogError("Scene can not contain multiple StateManagers");
+        }
+
         instance = this;
     }
 

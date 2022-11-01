@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 0.3647059}
+  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -745,7 +745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 36}
+  m_AnchoredPosition: {x: 0, y: 65}
   m_SizeDelta: {x: -100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5379291169498595356
@@ -778,8 +778,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e86c90937ac1f6c4cb1ee8af586b37cb, type: 2}
-  m_sharedMaterial: {fileID: 5013986759321391500, guid: e86c90937ac1f6c4cb1ee8af586b37cb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -803,8 +803,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1071,6 +1071,7 @@ GameObject:
   - component: {fileID: 6578794409450560402}
   - component: {fileID: 6578794409450560406}
   - component: {fileID: 596173674}
+  - component: {fileID: 947320621}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1199,3 +1200,15 @@ MonoBehaviour:
   popupContainer: {fileID: 1097787092}
   DialogueFile: {fileID: 4900000, guid: 31e3a12ebbc064946ae429f2ef71759b, type: 3}
   SelectedLanguage: en
+--- !u!114 &947320621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6578794409450560403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e608b22b75c065b4d99d92a124de4611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -19,6 +19,8 @@ public class CloneRecordingPlayer : MonoBehaviour
 
     private bool StartPlayback = false;
 
+    List<GameObject> touchingObjects = new();
+
     private void Start()
     {
         instance = this;
@@ -79,6 +81,44 @@ public class CloneRecordingPlayer : MonoBehaviour
         if (animationEvent.animatorClipInfo.weight > 0.5f)
         {
             AudioSource.PlayClipAtPoint(onLandSound, transform.position, footstepAudioVolume);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        touchingObjects.Add(collision.gameObject);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        touchingObjects.Remove(collision.gameObject);
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        touchingObjects.Add(collision.gameObject);
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        touchingObjects.Remove(collision.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        foreach (GameObject ob in touchingObjects)
+        {
+            ButtonTrigger bt = ob.GetComponent<ButtonTrigger>();
+            if (bt != null)
+            {
+                bt.HandleExit(this.gameObject);
+            }
+
+            ToggleTrigger tt = ob.GetComponent<ToggleTrigger>();
+            if (tt != null)
+            {
+                tt.HandleExit(this.gameObject);
+            }
         }
     }
 }

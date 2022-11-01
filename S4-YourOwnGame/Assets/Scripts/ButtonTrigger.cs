@@ -12,6 +12,7 @@ public class ButtonTrigger : MonoBehaviour
     [SerializeField] float ActiveTimerSeconds = 0f;
     [SerializeField] bool HasObjectTagRestriction = false;
     [SerializeField] string[] TagNames;
+    [SerializeField] AudioClip clickSound;
 
     public bool IsPressed = false;
     public List<string> Actors = new List<string>();
@@ -20,6 +21,8 @@ public class ButtonTrigger : MonoBehaviour
     {
         if (!IsPressed && !Actors.Contains(collider.name))
         {
+            AudioSource.PlayClipAtPoint(clickSound, transform.position);
+
             if (HasObjectTagRestriction && TagNames != null)
             {
                 if (TagNames.Contains(collider.tag))

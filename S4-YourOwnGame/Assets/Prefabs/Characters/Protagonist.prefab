@@ -2609,7 +2609,7 @@ MonoBehaviour:
   audioListener: {fileID: 3151193507156837333}
   EnterCloneRecordingAnimation: {fileID: 0}
   ExitCloneRecordingAnimation: {fileID: 0}
-  canUseClones: 0
+  canUseClones: 1
 --- !u!54 &3151193508667264191
 Rigidbody:
   m_ObjectHideFlags: 0

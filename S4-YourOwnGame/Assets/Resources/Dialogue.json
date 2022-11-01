@@ -43,42 +43,49 @@
                     "Name": "CloneTutorial_EnterMindspace",
                     "String": "Enter your mindspace to create a route for your clone to take.",
                     "ScreenTime": 4.0,
-                    "AudioClip": "Audio/Sfx/test"
+                    "AudioClip": "Audio/Sfx/CloneTutorial/EnterMindspace"
                 },
                 {
                     "Name": "CloneTutorial_MoveToButton",
                     "String": "Please press the button to open the door.",
-                    "ScreenTime": 4.0
+                    "ScreenTime": 4.0,
+                    "AudioClip": "Audio/Sfx/CloneTutorial/MoveToButton"
                 },
                 {
                     "Name": "CloneTutorial_DisposeOfClone",
                     "String": "You may now return to reality, as this route is sufficient.",
-                    "ScreenTime": 4.0
+                    "ScreenTime": 4.0,
+                    "AudioClip": "Audio/Sfx/CloneTutorial/DisposeOfClone"
                 },
                 {
                     "Name": "CloneTutorial_ExplainReplay",
                     "String": "The clone will now follow its designated route.",
-                    "ScreenTime": 4.0
+                    "ScreenTime": 4.0,
+                    "AudioClip": "Audio/Sfx/CloneTutorial/ExplainReplay"
                 },
                 {
                     "Name": "CloneTutorial_PressButtonToOpenBridge",
                     "String": "Get a new clone to press the button to extend the bridge.",
-                    "ScreenTime": 4.0
+                    "ScreenTime": 4.0,
+                    "AudioClip": "Audio/Sfx/CloneTutorial/PressButtonOpenBridge"
                 },
                 {
                     "Name": "CloneTutorial_AutomaticDisintegration",
                     "String": "You can only handle up to 10 seconds in your mindspace, after this the clone will automatically disintegrate. You can still dispose of it earlier, should you want to.",
-                    "ScreenTime": 6.0
+                    "ScreenTime": 6.0,
+                    "AudioClip": "Audio/Sfx/CloneTutorial/AutomaticDisintegration"
                 },
                 {
                     "Name": "CloneTutorial_CreateNewCloneToTryAgain",
                     "String": "Subject failed the very simple task of pressing the button. Please try again.",
-                    "ScreenTime": 4.0
+                    "ScreenTime": 4.0,
+                    "AudioClip": "Audio/Sfx/CloneTutorial/TryAgainNewClone"
                 },
                 {
                     "Name": "CloneTutorial_RetryCloneRecording",
                     "String": "Oops... That wasn't supposed to happen. You can retry with your clone taking the same route.",
-                    "ScreenTime": 7.0
+                    "ScreenTime": 7.0,
+                    "AudioClip": "Audio/Sfx/CloneTutorial/TryAgainSameClone"
                 }
             ]
         }

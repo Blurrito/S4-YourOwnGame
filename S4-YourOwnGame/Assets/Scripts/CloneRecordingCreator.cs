@@ -63,6 +63,16 @@ public class CloneRecordingCreator : MonoBehaviour
         touchingObjects.Remove(collision.gameObject);
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        touchingObjects.Add(collision.gameObject);
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        touchingObjects.Remove(collision.gameObject);
+    }
+
     private void DecreaseTimer()
     {
         if (RecordingTimeLeft == 0)
@@ -93,9 +103,26 @@ public class CloneRecordingCreator : MonoBehaviour
         HudManager.instance.ActivateTimer(false);
     }
 
+    private void OnDestroy()
+    {
+        foreach (GameObject ob in touchingObjects)
+        {
+            ButtonTrigger bt = ob.GetComponent<ButtonTrigger>();
+            if (bt != null)
+            {
+                bt.HandleExit(this.gameObject);
+            }
+
+            ToggleTrigger tt = ob.GetComponent<ToggleTrigger>();
+            if (tt != null)
+            {
+                tt.HandleExit(this.gameObject);
+            }
+        }
+    }
+
     public void DestroyClone()
     {
-        transform.parent.position = new Vector3(0, -1000, 0);
         Destroy(transform.parent.gameObject);
     }
 

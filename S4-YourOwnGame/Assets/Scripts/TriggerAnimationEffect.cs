@@ -6,12 +6,12 @@ public class TriggerAnimationEffect : TriggerEffect
 {
     [SerializeField] string PropertyName = string.Empty;
 
-    Animator Animator = null;
+    public Animator Animator = null;
     public bool IsPlaying = false;
 
     private void Start()
     {
-        Animator = gameObject.GetComponent<Animator>();
+        if (Animator == null) Animator = gameObject.GetComponent<Animator>();
     }
 
     public override void EndEffect()

@@ -38,12 +38,6 @@ public class Tutorial_Clone : MonoBehaviour
         createCloneAction = inputAsset.FindAction(createCloneActionName, true);
         cancelCloneAction = inputAsset.FindAction(cancelCloneActionName, true);
         retryCloneAction = inputAsset.FindAction(retryCloneActionName, true);
-
-        createCloneAction.Disable();
-        cancelCloneAction.Disable();
-        retryCloneAction.Disable();
-
-        CloneRecordingCreator.shouldHaveTimer = false;
     }
 
     private void Update()
@@ -55,6 +49,11 @@ public class Tutorial_Clone : MonoBehaviour
     {
         if (!tutorialStarted && other.CompareTag("Player"))
         {
+            createCloneAction.Disable();
+            cancelCloneAction.Disable();
+            retryCloneAction.Disable();
+
+            CloneRecordingCreator.shouldHaveTimer = false;
             tutorialStarted = true;
             StartCoroutine(StartBasicsTutorial());
         }

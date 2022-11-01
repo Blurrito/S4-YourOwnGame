@@ -12,12 +12,15 @@ public class ToggleTrigger : MonoBehaviour
     [SerializeField] public GameObject toggleOnState;
     [SerializeField] public GameObject toggleOffState;
 
+    [SerializeField] AudioClip toggleSound;
+
     public bool state = false;
     public List<string> Actors = new List<string>();
 
     private void HandleEnter(GameObject collider)
     {
         if (Actors.Contains(collider.name)) return;
+        AudioSource.PlayClipAtPoint(toggleSound, transform.position);
 
         if (HasObjectTagRestriction && TagNames != null)
         {
@@ -34,7 +37,7 @@ public class ToggleTrigger : MonoBehaviour
         }
     }
 
-    private void HandleExit(GameObject gameObject)
+    public void HandleExit(GameObject gameObject)
     {
         if (Actors.Contains(gameObject.name))
         {
