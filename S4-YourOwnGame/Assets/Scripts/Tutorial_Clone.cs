@@ -53,6 +53,8 @@ public class Tutorial_Clone : MonoBehaviour
             cancelCloneAction.Disable();
             retryCloneAction.Disable();
 
+            CloneManager.instance.canUseClones = true;
+
             CloneRecordingCreator.shouldHaveTimer = false;
             tutorialStarted = true;
             StartCoroutine(StartBasicsTutorial());

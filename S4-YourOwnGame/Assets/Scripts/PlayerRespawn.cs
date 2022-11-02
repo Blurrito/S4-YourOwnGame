@@ -9,10 +9,15 @@ public class PlayerRespawn : MonoBehaviour
     private GameObject CurrentRespawnPoint;
 
     [SerializeField] AudioClip respawnSound;
+    [SerializeField] Animator fade;
 
     private void Start()
     {
+        if (instance != null) return;
+
         instance = this;
+        CurrentRespawnPoint = new GameObject("InitialSpawnPoint");
+        CurrentRespawnPoint.transform.SetPositionAndRotation(transform.position, transform.rotation);
     }
 
     public void SetRespawnPoint(GameObject NewRespawnPoint)
@@ -27,7 +32,17 @@ public class PlayerRespawn : MonoBehaviour
     {
         StateManager.instance.LoadAllStates(ObjectStateStamp.checkpoint);
 
+        if (fade) fade.SetTrigger("Fade");
+
         AudioSource.PlayClipAtPoint(respawnSound, transform.position);
+
+        StartCoroutine(SetPos());
+    }
+
+    private IEnumerator SetPos()
+    {
+        if (fade) yield return new WaitForSeconds(0.3f);
+
         if (CurrentRespawnPoint != null)
             transform.position = CurrentRespawnPoint.transform.position;
     }

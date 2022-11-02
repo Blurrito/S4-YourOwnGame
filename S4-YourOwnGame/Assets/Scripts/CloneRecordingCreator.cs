@@ -39,6 +39,8 @@ public class CloneRecordingCreator : MonoBehaviour
 
     void OnEnable()
     {
+        if (StateManager.instance == null) Debug.LogWarning("No statemanager in scene. Can potentially cause issues.");
+
         StateManager.instance.SaveAllStates(ObjectStateStamp.recording);
         instance = this;
         records = new List<TransformRecord>();

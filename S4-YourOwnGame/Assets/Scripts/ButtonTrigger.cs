@@ -21,8 +21,6 @@ public class ButtonTrigger : MonoBehaviour
     {
         if (!IsPressed && !Actors.Contains(collider.name))
         {
-            AudioSource.PlayClipAtPoint(clickSound, transform.position);
-
             if (HasObjectTagRestriction && TagNames != null)
             {
                 if (TagNames.Contains(collider.tag))
@@ -81,6 +79,7 @@ public class ButtonTrigger : MonoBehaviour
 
     private void BeginButtonPress()
     {
+        if (clickSound != null) AudioSource.PlayClipAtPoint(clickSound, transform.position);
         IsPressed = true;
         CancelInvoke(nameof(RevertEffect));
         TriggerEffect();
