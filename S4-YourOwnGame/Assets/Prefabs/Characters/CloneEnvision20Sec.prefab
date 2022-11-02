@@ -1710,8 +1710,8 @@ MonoBehaviour:
   CameraObject: {fileID: 9204858544190150554}
   MouseHorizontalGain: 0.15
   MouseVerticalGain: 0.15
-  JoystickHorizontalGain: 2
-  JoystickVerticalGain: 2
+  JoystickHorizontalGain: 0.15
+  JoystickVerticalGain: 0.15
 --- !u!1 &3377462005303877533
 GameObject:
   m_ObjectHideFlags: 0
