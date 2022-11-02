@@ -60,6 +60,20 @@ public class DialogueManager : MonoBehaviour
 
         return newPopup;
     }
+
+    public void AddHintPopupAndDestroy(string text, float time)
+    {
+        var newPopup = Instantiate(popupTemplate, popupContainer);
+        newPopup.transform.Find("HintText").GetComponent<TextMeshProUGUI>().text = text;
+        newPopup.SetActive(true);
+        StartCoroutine(DestroyAfterTime(newPopup, time));
+    }
+
+    public IEnumerator DestroyAfterTime(GameObject obj, float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        Destroy(obj);
+    }
 }
 
 [System.Serializable]

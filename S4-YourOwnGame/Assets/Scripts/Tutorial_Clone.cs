@@ -68,6 +68,7 @@ public class Tutorial_Clone : MonoBehaviour
 
         //[Subtitle/voiceline: "something something enter mindspace something something"]
         DialogueManager.instance.AddDialogueToQueue("CloneTutorial_EnterMindspace");
+        yield return new WaitForSeconds(3);
 
         //[Show popup: press C to create a clone]
         GameObject createClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(createCloneAction)}] to create a clone.");
@@ -85,8 +86,6 @@ public class Tutorial_Clone : MonoBehaviour
         //{Wait until player (still in clone character) touches button, door opens}
         yield return new WaitUntil(() => firstButton.IsPressed);
 
-        //[Subtitle/voiceline: Dispose of the clone]
-        DialogueManager.instance.AddDialogueToQueue("CloneTutorial_DisposeOfClone");
 
         //[Show popup: press X to dispose of the clone manually]
         GameObject cancelClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(cancelCloneAction)}] to exit your mindspace.");
@@ -128,7 +127,7 @@ public class Tutorial_Clone : MonoBehaviour
         //[Subtitle/voiceline: The clone will automatically disintegrate after a few seconds. You can still dispose of it earlier if you want to.]
         DialogueManager.instance.AddDialogueToQueue("CloneTutorial_AutomaticDisintegration");
 
-        secondStage:
+    secondStage:
         //{Wait until player back in control of protagonist}
         yield return new WaitUntil(() => CloneRecordingPlayer.instance != null);
 
@@ -155,6 +154,7 @@ public class Tutorial_Clone : MonoBehaviour
             yield return new WaitUntil(() => bottomPitTrigger.IsPressed);
             yield return new WaitForSeconds(3);
             DialogueManager.instance.AddDialogueToQueue("CloneTutorial_RetryCloneRecording");
+            yield return new WaitForSeconds(3);
             Destroy(BridgeNoCheatBarrier);
 
             //	[Show popup: Press R to retry with the last recording]

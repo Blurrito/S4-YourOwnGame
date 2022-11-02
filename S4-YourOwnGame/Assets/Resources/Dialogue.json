@@ -71,8 +71,8 @@
                 },
                 {
                     "Name": "CloneTutorial_AutomaticDisintegration",
-                    "String": "You can only handle up to 10 seconds in your mindspace, after this the clone will automatically disintegrate. You can still dispose of it earlier, should you want to.",
-                    "ScreenTime": 6.0,
+                    "String": "You can only handle up to 30 seconds in your mindspace, after this the clone will disintegrate. You can still dispose of it earlier, should you want to.",
+                    "ScreenTime": 10.0,
                     "AudioClip": "Audio/Sfx/CloneTutorial/AutomaticDisintegration"
                 },
                 {

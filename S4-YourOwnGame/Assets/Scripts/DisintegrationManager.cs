@@ -13,11 +13,20 @@ public class DisintegrationManager : MonoBehaviour
     [SerializeField] AudioClip disintegrationSound;
     [SerializeField] CloneRecordingPlayer recordingPlayer;
 
+    private static bool hasShownMessageObject = false;
+    private static bool hasShownMessageFloor = false;
+
     int ticksWithoutFloor = 0;
     [SerializeField] int maxTicksWithoutFloor = 5;
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!hasShownMessageObject)
+        {
+            hasShownMessageObject = true;
+            DialogueManager.instance.AddHintPopupAndDestroy("If an object blocks the clone's path, it will disintegrate.", 5);
+        }
+
         AudioSource.PlayClipAtPoint(disintegrationSound, transform.position);
         Debug.Log("Die to collision with: " + collision.gameObject.name);
         recordingPlayer.KillClone();
@@ -32,6 +41,11 @@ public class DisintegrationManager : MonoBehaviour
         {
             if (ticksWithoutFloor >= maxTicksWithoutFloor)
             {
+                if (!hasShownMessageFloor)
+                {
+                    hasShownMessageFloor = true;
+                    DialogueManager.instance.AddHintPopupAndDestroy("If the clone is not touching the ground when it should, it will disintegrate.", 5);
+                }
                 Debug.Log("Die to no floor");
                 AudioSource.PlayClipAtPoint(disintegrationSound, transform.position);
                 recordingPlayer.KillClone();
