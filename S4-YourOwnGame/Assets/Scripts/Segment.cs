@@ -63,8 +63,6 @@ public class Segment : MonoBehaviour
 
     private void ResetSegment()
     {
-        SpawnedObstacles = 0;
-
         SegmentEnded = true;
         RandomizeArray(Obstacles, out ObstacleOrder, ObstacleCount);
         TriggerEffects(OnSegmentFailEffects, false);
