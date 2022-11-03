@@ -19,9 +19,10 @@ public class TriggerAnimationEffect : TriggerEffect
     {
         if (IsPlaying)
         {
-            IsPlaying = false;
+            //IsPlaying = false;
+            IsPlaying = !IsPlaying;
             if (!IsTrigger)
-                Animator.SetBool(PropertyName, false);
+                Animator.SetBool(PropertyName, IsPlaying);
         }
     }
 
