@@ -19,21 +19,13 @@ public class ButtonTrigger : MonoBehaviour
 
     public void HandleEnter(GameObject collider)
     {
-        if (!IsPressed && !Actors.Contains(collider.name))
+        if (!Actors.Contains(collider.name))
         {
-            if (HasObjectTagRestriction && TagNames != null)
-            {
-                if (TagNames.Contains(collider.tag))
-                {
-                    Actors.Add(collider.name);
-                    BeginButtonPress();
-                }
-
-            }
-            else
+            if (!HasObjectTagRestriction || TagNames.Contains(collider.tag))
             {
                 Actors.Add(collider.name);
-                BeginButtonPress();
+
+                if (!IsPressed) BeginButtonPress();
             }
         }
     }
@@ -47,6 +39,7 @@ public class ButtonTrigger : MonoBehaviour
         if (IsPressed && Actors.Contains(collider.name))
         {
             Actors.Remove(collider.name);
+            Debug.Log(Actors.Count);
             if (Actors.Count == 0 && DisableOnExit)
                 EndButtonPress();
         }
