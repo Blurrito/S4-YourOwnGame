@@ -5,6 +5,7 @@ using UnityEngine;
 public class TriggerAnimationEffect : TriggerEffect
 {
     [SerializeField] string PropertyName = string.Empty;
+    [SerializeField] bool IsTrigger = false;
 
     public Animator Animator = null;
     public bool IsPlaying = false;
@@ -19,13 +20,16 @@ public class TriggerAnimationEffect : TriggerEffect
         if (IsPlaying)
         {
             IsPlaying = false;
-            Animator.SetBool(PropertyName, false);
+            if (!IsTrigger)
+                Animator.SetBool(PropertyName, false);
         }
     }
 
     public override void StartEffect()
     {
         IsPlaying = !IsPlaying;
-        Animator.SetBool(PropertyName, IsPlaying);
+        if (!IsTrigger)
+            Animator.SetBool(PropertyName, IsPlaying);
+        Animator.SetTrigger(PropertyName);
     }
 }
