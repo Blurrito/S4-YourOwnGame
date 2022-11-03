@@ -68,7 +68,7 @@ public class Tutorial_Clone : MonoBehaviour
 
         //[Subtitle/voiceline: "something something enter mindspace something something"]
         DialogueManager.instance.AddDialogueToQueue("CloneTutorial_EnterMindspace");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(7);
 
         //[Show popup: press C to create a clone]
         GameObject createClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(createCloneAction)}] to create a clone.");
@@ -79,9 +79,6 @@ public class Tutorial_Clone : MonoBehaviour
         //{Wait until player creates clone} [destroy popup]
         yield return new WaitUntil(() => CloneRecordingCreator.instance != null);
         Destroy(createClonePopup);
-
-        //[Subtitle/voiceline: Move to the button with the clone]
-        DialogueManager.instance.AddDialogueToQueue("CloneTutorial_MoveToButton");
 
         //{Wait until player (still in clone character) touches button, door opens}
         yield return new WaitUntil(() => firstButton.IsPressed);

@@ -12,37 +12,37 @@
                 {
                     "Name": "Lvl_01_01_Phase01Start",
                     "String": "Initiating phase 1. Avoid all incoming obstacles. Making contact will result in failure.",
-                    "ScreenTime": 3.0,
-                    "AudioClip": ""
+                    "ScreenTime": 6.0,
+                    "AudioClip": "Audio/Sfx/MovementTutorial/InitPhase1"
                 },
                 {
                     "Name": "Lvl_01_01_Phase02Start",
                     "String": "Initiating phase 2. Scale all incoming obstacles. Making contact will result in failure.",
-                    "ScreenTime": 3.0,
-                    "AudioClip": ""
+                    "ScreenTime": 6.0,
+                    "AudioClip": "Audio/Sfx/MovementTutorial/InitPhase2"
                 },
                 {
                     "Name": "Lvl_01_01_PhaseEndFailure",
                     "String": "Subject made contact with obstacle. Test failed.",
-                    "ScreenTime": 3.0,
-                    "AudioClip": ""
+                    "ScreenTime": 4.0,
+                    "AudioClip": "Audio/Sfx/MovementTutorial/TestFail"
                 },
                 {
                     "Name": "Lvl_01_01_PhaseEndSuccess",
                     "String": "Test passed.",
                     "ScreenTime": 3.0,
-                    "AudioClip": ""
+                    "AudioClip": "Audio/Sfx/MovementTutorial/TestPassed"
                 },
                 {
                     "Name": "Lvl_01_01_TestEndSuccess",
                     "String": "Course cleared, please proceed to the next room.",
-                    "ScreenTime": 3.0,
-                    "AudioClip": ""
+                    "ScreenTime": 4.0,
+                    "AudioClip": "Audio/Sfx/MovementTutorial/AllTestsPassed"
                 },
                 {
                     "Name": "CloneTutorial_EnterMindspace",
-                    "String": "Enter your mindspace to create a route for your clone to take.",
-                    "ScreenTime": 4.0,
+                    "String": "If a button is grayed out, it can not be pressed in your current form. Enter your mindspace to create a route for your clone to take.",
+                    "ScreenTime": 11.0,
                     "AudioClip": "Audio/Sfx/CloneTutorial/EnterMindspace"
                 },
                 {
@@ -86,6 +86,12 @@
                     "String": "Oops... That wasn't supposed to happen. You can retry with your clone taking the same route.",
                     "ScreenTime": 7.0,
                     "AudioClip": "Audio/Sfx/CloneTutorial/TryAgainSameClone"
+                },
+                {
+                    "Name": "ButtonDepress",
+                    "String": "Some buttons will turn off as soon as they stop being touched, while others could stay on for some time.",
+                    "ScreenTime": 7.0,
+                    "AudioClip": "Audio/Sfx/ButtonDepress"
                 }
             ]
         }
