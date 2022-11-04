@@ -67,7 +67,7 @@ public class CloneManager : MonoBehaviour
         SetPlayerControlStatus(true);
         
 
-        GameObject replayingClone = Instantiate(clonePhysicalPrefab, protagonist.position, protagonist.rotation);
+        GameObject replayingClone = Instantiate(clonePhysicalPrefab, records[0].position, records[0].rotation);
         replayingClone.GetComponent<CloneRecordingPlayer>().records = records;
     }
 
