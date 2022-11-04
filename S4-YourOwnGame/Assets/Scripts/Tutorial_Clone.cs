@@ -165,6 +165,11 @@ public class Tutorial_Clone : MonoBehaviour
             firstBridgePart.isKinematic = true;
             secondBridgePart.isKinematic = true;
             Destroy(retryClonePopup);
+
+            yield return new WaitForSeconds(0.1f);
+
+            firstBridgePart.transform.position.Set(firstBridgePart.transform.position.x, 0, firstBridgePart.transform.position.z);
+            secondBridgePart.transform.position.Set(secondBridgePart.transform.position.x, 0, secondBridgePart.transform.position.z);
         }
     }
 
