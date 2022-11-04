@@ -17,13 +17,13 @@ public class TriggerAnimationEffect : TriggerEffect
 
     public override void EndEffect()
     {
-        if (IsPlaying)
-        {
+        //if (IsPlaying)
+        //{
             //IsPlaying = false;
             IsPlaying = !IsPlaying;
             if (!IsTrigger)
                 Animator.SetBool(PropertyName, IsPlaying);
-        }
+        //}
     }
 
     public override void StartEffect()
