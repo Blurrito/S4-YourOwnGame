@@ -17,20 +17,23 @@ public class TriggerAnimationEffect : TriggerEffect
 
     public override void EndEffect()
     {
+        Animator.GetBool(PropertyName);
         //if (IsPlaying)
         //{
             //IsPlaying = false;
-            IsPlaying = !IsPlaying;
-            if (!IsTrigger)
+            //IsPlaying = !IsPlaying;
+            IsPlaying = !Animator.GetBool(PropertyName);
+        if (!IsTrigger)
                 Animator.SetBool(PropertyName, IsPlaying);
         //}
     }
 
     public override void StartEffect()
     {
-        IsPlaying = !IsPlaying;
+        IsPlaying = !Animator.GetBool(PropertyName);
         if (!IsTrigger)
             Animator.SetBool(PropertyName, IsPlaying);
-        Animator.SetTrigger(PropertyName);
+        else
+            Animator.SetTrigger(PropertyName);
     }
 }

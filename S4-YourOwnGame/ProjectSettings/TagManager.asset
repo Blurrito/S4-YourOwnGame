@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - PlayerClone
+  - Movable
   layers:
   - Default
   - TransparentFX
