@@ -36,6 +36,7 @@ public class CloneManager : MonoBehaviour
 
         if (EnterCloneRecordingAnimation != null)
         {
+            CloneSwapSound.instance.Enterclone();
             SetPlayerActionMapStatus(false);
             Animator ZoomInAnimator = virtualCamera.GetComponent<Animator>();
             if (ZoomInAnimator != null)

@@ -91,6 +91,7 @@ public class CloneRecordingCreator : MonoBehaviour
 
     public void EndRecording(bool SaveRecording)
     {
+        CloneSwapSound.instance.ExitClone();
         RecordingSaved = SaveRecording;
         if (ExitCloneRecordingAnimation != null)
             ExitCloneRecordingAnimation.SetTrigger("Active");
