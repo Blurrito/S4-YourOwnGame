@@ -78,6 +78,8 @@ namespace StarterAssets
 
 		public void OnCancelRecord()
 		{
+			if (!Tutorial_Clone.canCancelClones) return;
+
 			if (CloneRecordingCreator.instance != null)
 			{
 				CloneRecordingCreator.instance.EndRecording(true);

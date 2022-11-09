@@ -10,7 +10,7 @@ public class ParentSetter : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals(Target))
-            PlayerObject.transform.parent = collision.transform.parent.transform;
+            PlayerObject.transform.parent = transform.parent.transform;
     }
 
     public void OnCollisionExit(Collision collision)

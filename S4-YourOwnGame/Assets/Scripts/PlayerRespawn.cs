@@ -11,6 +11,8 @@ public class PlayerRespawn : MonoBehaviour
     [SerializeField] AudioClip respawnSound;
     [SerializeField] Animator fade;
 
+    bool isRespawning = false;
+
     private void Start()
     {
         if (instance != null) return;
@@ -30,6 +32,10 @@ public class PlayerRespawn : MonoBehaviour
 
     public void RespawnObject()
     {
+        if (isRespawning) return;
+
+        isRespawning = true;
+
         StateManager.instance.LoadAllStates(ObjectStateStamp.checkpoint);
 
         if (fade) fade.SetTrigger("Fade");
@@ -45,5 +51,9 @@ public class PlayerRespawn : MonoBehaviour
 
         if (CurrentRespawnPoint != null)
             transform.position = CurrentRespawnPoint.transform.position;
+
+
+        yield return new WaitForSeconds(0.1f);
+        isRespawning = false;
     }
 }

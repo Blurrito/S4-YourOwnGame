@@ -30,7 +30,7 @@ public class CloneManager : MonoBehaviour
 
     void OnStartRecord()
     {
-        if (!canUseClones) return;
+        if (!canUseClones || !Tutorial_Clone.canCreateClones) return;
 
         if (FindObjectOfType<CloneRecordingPlayer>()) return;
 
@@ -98,7 +98,7 @@ public class CloneManager : MonoBehaviour
 
     public void OnRetryWithLastRecording()
     {
-        if (!canUseClones) return;
+        if (!canUseClones || !Tutorial_Clone.canRetryClones) return;
 
         if (previousCloneRecording != null && previousCloneRecording.Count > 0)
         {

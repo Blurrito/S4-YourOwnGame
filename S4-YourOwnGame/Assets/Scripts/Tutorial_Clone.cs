@@ -12,6 +12,10 @@ public class Tutorial_Clone : MonoBehaviour
     [SerializeField] string cancelCloneActionName;
     [SerializeField] string retryCloneActionName;
 
+    InputAction createCloneAction;
+    InputAction cancelCloneAction;
+    InputAction retryCloneAction;
+
     [SerializeField] ButtonTrigger firstButton;
     [SerializeField] ButtonTrigger EnterSecondRoomTrigger;
     [SerializeField] ButtonTrigger secondButton;
@@ -25,9 +29,9 @@ public class Tutorial_Clone : MonoBehaviour
 
     [SerializeField] GameObject BridgeNoCheatBarrier;
 
-    InputAction createCloneAction;
-    InputAction cancelCloneAction;
-    InputAction retryCloneAction;
+    public static bool canCreateClones = true;
+    public static bool canCancelClones = true;
+    public static bool canRetryClones = true;
 
     private bool tutorialStarted = false;
 
@@ -42,18 +46,29 @@ public class Tutorial_Clone : MonoBehaviour
 
     private void Update()
     {
-        if (secondButton.IsPressed && CloneRecordingCreator.instance != null) pressedSecondButtonDuringRecording = true;
+        if (secondButton.IsPressed && CloneRecordingCreator.instance != null)
+        {
+            pressedSecondButtonDuringRecording = true;
+
+            Invoke(nameof(CloneStopMoving), 0.3f);
+        }
+    }
+
+    private void CloneStopMoving()
+    {
+        CloneRecordingCreator.instance.GetComponent<StarterAssets.ThirdPersonController>().enabled = false;
+        CloneRecordingCreator.instance.GetComponent<Animator>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!tutorialStarted && other.CompareTag("Player"))
         {
-            createCloneAction.Disable();
-            cancelCloneAction.Disable();
-            retryCloneAction.Disable();
-
             CloneManager.instance.canUseClones = true;
+
+            canCreateClones = false;
+            canCancelClones = false;
+            canRetryClones = false;
 
             CloneRecordingCreator.shouldHaveTimer = false;
             tutorialStarted = true;
@@ -74,7 +89,7 @@ public class Tutorial_Clone : MonoBehaviour
         GameObject createClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(createCloneAction)}] to create a clone.");
 
         //+ ability: press C
-        createCloneAction.Enable();
+        canCreateClones = true;
 
         //{Wait until player creates clone} [destroy popup]
         yield return new WaitUntil(() => CloneRecordingCreator.instance != null);
@@ -83,15 +98,15 @@ public class Tutorial_Clone : MonoBehaviour
         //{Wait until player (still in clone character) touches button, door opens}
         yield return new WaitUntil(() => firstButton.IsPressed);
 
-
         //[Show popup: press X to dispose of the clone manually]
         GameObject cancelClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(cancelCloneAction)}] to exit your mindspace.");
 
         //+ ability: press X
-        cancelCloneAction.Enable();
+        canCancelClones = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         CloneRecordingCreator.instance.GetComponent<StarterAssets.ThirdPersonController>().enabled = false;
+        CloneRecordingCreator.instance.GetComponent<Animator>().enabled = false;
 
         //[Wait until player presses X, then destroy hint popup]
         yield return new WaitUntil(() => CloneRecordingPlayer.instance != null);
@@ -139,37 +154,45 @@ public class Tutorial_Clone : MonoBehaviour
         else //<else (if button pressed during recording)> =>
         {
             bottomPitDeath.TriggerPlayerDeath = false;
+            bottomPitTrigger.gameObject.SetActive(true);
+            canCreateClones = false;
+            canCancelClones = true;
 
             //[Somehow ensure player does not make it to the other side (for example, the bridge breaking)]
             midBridgeTrigger.gameObject.SetActive(true);
-            yield return new WaitUntil(() => midBridgeTrigger.IsPressed);
+            yield return new WaitUntil(() => midBridgeTrigger.IsPressed || bottomPitTrigger.IsPressed);
             Destroy(midBridgeTrigger.gameObject);
             firstBridgePart.isKinematic = false;
             secondBridgePart.isKinematic = false;
-            bottomPitTrigger.gameObject.SetActive(true);
 
             yield return new WaitUntil(() => bottomPitTrigger.IsPressed);
             yield return new WaitForSeconds(3);
             DialogueManager.instance.AddDialogueToQueue("CloneTutorial_RetryCloneRecording");
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4);
             Destroy(BridgeNoCheatBarrier);
 
             //	[Show popup: Press R to retry with the last recording]
             GameObject retryClonePopup = DialogueManager.instance.AddHintPopup($"Press [{GetKeyNameForAction(retryCloneAction)}] to retry with the latest clone recording.");
 
             //+ ability: press R
-            retryCloneAction.Enable();
+            canRetryClones = true;
 
             yield return new WaitUntil(() => !bottomPitTrigger.IsPressed);
             bottomPitDeath.TriggerPlayerDeath = true;
             firstBridgePart.isKinematic = true;
             secondBridgePart.isKinematic = true;
-            Destroy(retryClonePopup);
 
             yield return new WaitForSeconds(0.1f);
 
             firstBridgePart.transform.position.Set(firstBridgePart.transform.position.x, 0, firstBridgePart.transform.position.z);
             secondBridgePart.transform.position.Set(secondBridgePart.transform.position.x, 0, secondBridgePart.transform.position.z);
+
+            yield return new WaitForSeconds(0.5f);
+
+            Destroy(retryClonePopup);
+
+            canCreateClones = true;
+            canCancelClones = true;
         }
     }
 
