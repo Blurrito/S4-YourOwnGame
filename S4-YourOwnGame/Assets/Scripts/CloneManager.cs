@@ -53,8 +53,8 @@ public class CloneManager : MonoBehaviour
         SetPlayerControlStatus(false);
         GameObject newClone = Instantiate(cloneEnvisionPrefab, transform.position, transform.rotation);
         CameraSensitivityController CloneCameraSensitivityController = newClone.transform.GetComponentInChildren<CameraSensitivityController>();
-        //if (CloneCameraSensitivityController != null && PlayerCameraSensitivityController != null)
-        //    CloneCameraSensitivityController.SetCameraSettings(PlayerCameraSensitivityController.GetCameraSettings());
+        if (CloneCameraSensitivityController != null && PlayerCameraSensitivityController != null)
+            CloneCameraSensitivityController.SetCameraSettings(PlayerCameraSensitivityController.GetCameraSettings());
     }
 
     public void SwitchToPlayer()

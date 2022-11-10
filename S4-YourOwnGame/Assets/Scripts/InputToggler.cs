@@ -5,21 +5,20 @@ using UnityEngine.InputSystem;
 
 public class InputToggler : MonoBehaviour
 {
+    [SerializeField] CameraSensitivityController PlayerCameraSensitivityController;
+
     [ContextMenu("Disable")]
-    public void DisableInputs()
-    {
-        foreach(PlayerInput input in FindObjectsOfType<PlayerInput>())
-        {
-            input.enabled = false;
-        }
-    }
+    public void DisableInputs() => ToggleUserInput(false);
 
     [ContextMenu("Enable")]
-    public void EnableInputs()
+    public void EnableInputs() => ToggleUserInput(true);
+
+    private void ToggleUserInput(bool isEnabled)
     {
-        foreach (PlayerInput input in FindObjectsOfType<PlayerInput>())
-        {
-            input.enabled = true;
-        }
+        if (PlayerCameraSensitivityController != null)
+            if (isEnabled)
+                PlayerCameraSensitivityController.EnableMovement();
+            else
+                PlayerCameraSensitivityController.DisableMovement();
     }
 }
