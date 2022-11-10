@@ -11,6 +11,7 @@ public class CloneManager : MonoBehaviour
     [SerializeField] GameObject clonePhysicalPrefab;
     [SerializeField] GameObject cloneEnvisionPrefab;
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] CameraSensitivityController PlayerCameraSensitivityController;
     [SerializeField] CinemachineVirtualCamera virtualCamera;
     [SerializeField] GameObject PlayerCameraRoot;
     [SerializeField] AudioListener audioListener;
@@ -51,6 +52,9 @@ public class CloneManager : MonoBehaviour
     {
         SetPlayerControlStatus(false);
         GameObject newClone = Instantiate(cloneEnvisionPrefab, transform.position, transform.rotation);
+        CameraSensitivityController CloneCameraSensitivityController = newClone.transform.GetComponentInChildren<CameraSensitivityController>();
+        //if (CloneCameraSensitivityController != null && PlayerCameraSensitivityController != null)
+        //    CloneCameraSensitivityController.SetCameraSettings(PlayerCameraSensitivityController.GetCameraSettings());
     }
 
     public void SwitchToPlayer()
@@ -72,21 +76,20 @@ public class CloneManager : MonoBehaviour
         replayingClone.GetComponent<CloneRecordingPlayer>().records = records;
     }
 
-    private void EnablePlayerInput() => playerInput.enabled = true;
-
     public void SetPlayerControlStatus(bool IsEnabled)
     {
         PlayerCameraRoot.SetActive(IsEnabled);
         audioListener.enabled = IsEnabled;
         virtualCamera.gameObject.SetActive(IsEnabled);
-        if (IsEnabled)
-            Invoke(nameof(EnablePlayerInput), 0.01f);
     }
 
     public void SetPlayerActionMapStatus(bool IsEnabled)
     {
-        if (playerInput != null)
-            playerInput.enabled = IsEnabled;
+        if (PlayerCameraSensitivityController != null)
+            if (IsEnabled)
+                PlayerCameraSensitivityController.EnableMovement();
+            else
+                PlayerCameraSensitivityController.DisableMovement();
     }
 
     public void SaveRecording(List<TransformRecord> recording)

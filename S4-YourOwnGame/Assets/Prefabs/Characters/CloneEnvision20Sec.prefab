@@ -123,8 +123,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393068791470249644}
-  m_LocalRotation: {x: -0.0065449188, y: -0.002616763, z: -0.000017126926, w: 0.9999752}
-  m_LocalPosition: {x: 0.06593269, y: 0.27264166, z: -3.9995995}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.045, y: 0.3249998, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -314,8 +314,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393068792186182685}
-  m_LocalRotation: {x: -0.0065449188, y: -0.002616763, z: -0.000017126926, w: 0.9999752}
-  m_LocalPosition: {x: 0.06593269, y: 0.27264166, z: -3.9995995}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.045, y: 0.3249998, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerIndex: -1
   AutoEnableInputs: 1
-  XYAxis: {fileID: -5630151704836100654, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  XYAxis: {fileID: -8657533078097957434, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
   ZAxis: {fileID: 0}
 --- !u!1 &2662793067379587557
 GameObject:
@@ -1670,7 +1670,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3155392187227063763}
-  - component: {fileID: 4779056442850363531}
   m_Layer: 0
   m_Name: CloneEnvision20Sec
   m_TagString: PlayerClone
@@ -1695,23 +1694,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4779056442850363531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3155392187227063764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209aa543ae90d0a47980788c9455040e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraObject: {fileID: 9204858544190150554}
-  MouseHorizontalGain: 0.15
-  MouseVerticalGain: 0.15
-  JoystickHorizontalGain: 0.15
-  JoystickVerticalGain: 0.15
 --- !u!1 &3377462005303877533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,6 +2870,7 @@ GameObject:
   - component: {fileID: 3155392185491238536}
   - component: {fileID: 3155392185491238543}
   - component: {fileID: 8065107457459526689}
+  - component: {fileID: 103337520340161997}
   m_Layer: 6
   m_Name: Clone
   m_TagString: PlayerClone
@@ -3039,12 +3022,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5999739926091677790}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -3125,9 +3108,9 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e4ce1614-c754-48c1-9103-33130441661f
     m_ActionName: UI/New action
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: 2b9f5377-da6e-459a-a311-f668494d888c
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 393068792186182675}
 --- !u!54 &3155392185491238536
@@ -3177,6 +3160,33 @@ MonoBehaviour:
   CloneInput: {fileID: 5999739926091677778}
   EnterCloneRecordingAnimation: {fileID: 4289343877375322515}
   ExitCloneRecordingAnimation: {fileID: 3504635673621220641}
+--- !u!114 &103337520340161997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5999739926091677790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209aa543ae90d0a47980788c9455040e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraObject: {fileID: 9204858544190150554}
+  CameraInput: {fileID: 1306152317409268273}
+  CurrentInput: {fileID: 5999739926091677778}
+  InputMaps: {fileID: -944628639613478452, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
+  KeyboardMouseMapCameraControls:
+  - {fileID: -8657533078097957434, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
+  - {fileID: -7859743085128878487, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
+  MouseHorizontalGain: 2
+  MouseVerticalGain: 2
+  ControllerMapCameraControls:
+  - {fileID: 7608668161511654574, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
+  - {fileID: 6461552356928325036, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
+  JoystickHorizontalGain: 1.5
+  JoystickVerticalGain: 1.5
+  DisableInputActionMapName: PlayerDisable
 --- !u!1 &6111423530361820384
 GameObject:
   m_ObjectHideFlags: 0
