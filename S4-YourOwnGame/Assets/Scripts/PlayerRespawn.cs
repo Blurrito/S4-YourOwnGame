@@ -30,7 +30,7 @@ public class PlayerRespawn : MonoBehaviour
             CurrentRespawnPoint = NewRespawnPoint;
     }
 
-    public void RespawnObject()
+    public void RespawnObject(bool makeSound = true)
     {
         if (isRespawning) return;
 
@@ -40,7 +40,7 @@ public class PlayerRespawn : MonoBehaviour
 
         if (fade) fade.SetTrigger("Fade");
 
-        AudioSource.PlayClipAtPoint(respawnSound, transform.position);
+        if (makeSound) AudioSource.PlayClipAtPoint(respawnSound, transform.position);
 
         StartCoroutine(SetPos());
     }

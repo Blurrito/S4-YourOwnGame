@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GoToCheckpoint",
+                    "type": "Button",
+                    "id": "0918ed91-9074-4e91-9c24-de817a3330a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -274,6 +283,17 @@
                     "action": "ActionMapChange",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b351278-07d2-45f5-8db2-878e7cb1c6a4",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "GoToCheckpoint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -357,6 +377,15 @@
                     "name": "ActionMapChange",
                     "type": "Button",
                     "id": "45186d65-35a2-4d64-8c3b-6ce6e95214e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GoToCheckpoint",
+                    "type": "Button",
+                    "id": "df31a21c-5474-4ff0-89f0-0b2cdfc44161",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -550,6 +579,17 @@
                     "action": "ActionMapChange",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "70bdd274-c856-408d-ba8c-95f94238a3db",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "GoToCheckpoint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -633,6 +673,15 @@
                     "name": "ActionMapChange",
                     "type": "Button",
                     "id": "bd9d23e7-9397-4497-bf1f-ca10fae687bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GoToCheckpoint",
+                    "type": "Button",
+                    "id": "215ff471-2633-449a-8015-ffd7b0f3080d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -824,6 +873,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ActionMapChange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f685ab1-80c6-428a-bd89-bf244787e855",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "GoToCheckpoint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -125,4 +125,9 @@ public class CloneManager : MonoBehaviour
             Debug.Log("No previous recording exists.");
         }
     }
+
+    public void OnGoToCheckpoint()
+    {
+        PlayerRespawn.instance.RespawnObject(false);
+    }
 }
