@@ -123,8 +123,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393068791470249644}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.045, y: 0.3249998, z: -4}
+  m_LocalRotation: {x: -0.0065449188, y: -0.002616763, z: -0.000017126926, w: 0.9999752}
+  m_LocalPosition: {x: 0.06593269, y: 0.27264166, z: -3.9995995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -314,8 +314,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393068792186182685}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.045, y: 0.3249998, z: -4}
+  m_LocalRotation: {x: -0.0065449188, y: -0.002616763, z: -0.000017126926, w: 0.9999752}
+  m_LocalPosition: {x: 0.06593269, y: 0.27264166, z: -3.9995995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3110,7 +3110,7 @@ MonoBehaviour:
     m_ActionName: UI/New action
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 2b9f5377-da6e-459a-a311-f668494d888c
+  m_DefaultActionMap: CloneKeyboardMouse
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 393068792186182675}
 --- !u!54 &3155392185491238536
@@ -3183,7 +3183,7 @@ MonoBehaviour:
   MouseVerticalGain: 2
   ControllerMapCameraControls:
   - {fileID: 7608668161511654574, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
-  - {fileID: 6461552356928325036, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
+  - {fileID: 5783742025986434132, guid: be0a1fdc882e9a643849b546ec927d24, type: 3}
   JoystickHorizontalGain: 1.5
   JoystickVerticalGain: 1.5
   DisableInputActionMapName: PlayerDisable

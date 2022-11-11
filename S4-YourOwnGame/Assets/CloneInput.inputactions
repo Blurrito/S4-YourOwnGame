@@ -67,24 +67,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "InputDeviceChange",
-                    "type": "Button",
-                    "id": "5cbf9ba4-5b0b-4f8a-b1df-a863cea2da56",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ActionMapChange",
-                    "type": "Button",
-                    "id": "293e327f-5565-408e-8b51-00d726c4eb79",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -252,28 +234,6 @@
                     "action": "RetryWithLastRecording",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "489a32db-9485-440b-8333-668a0b24f221",
-                    "path": "<Keyboard>/slash",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse;Gamepad;Xbox Controller",
-                    "action": "InputDeviceChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "eaae46c8-04ff-4b4c-a48d-0d48b0fd7dd2",
-                    "path": "<Keyboard>/period",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse;Gamepad;Xbox Controller",
-                    "action": "ActionMapChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -339,24 +299,6 @@
                     "name": "RetryWithLastRecording",
                     "type": "Button",
                     "id": "48f838c6-d02e-4301-a9e7-a5ac1850f54d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "InputDeviceChange",
-                    "type": "Button",
-                    "id": "f52ae346-ad1f-4a6d-80bd-23fbded30bca",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ActionMapChange",
-                    "type": "Button",
-                    "id": "f88fd058-438e-47c2-8eac-028e19f9427e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -528,28 +470,6 @@
                     "action": "RetryWithLastRecording",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b3b45ace-848e-45e1-a12c-2525152a04bc",
-                    "path": "<Keyboard>/slash",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InputDeviceChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1e49c413-3afd-4b4f-98cb-451dbba26cc8",
-                    "path": "<Keyboard>/period",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ActionMapChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -619,24 +539,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "InputDeviceChange",
-                    "type": "Button",
-                    "id": "bb38dd15-eb2f-4822-9f98-87fef515bcc1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ActionMapChange",
-                    "type": "Button",
-                    "id": "02e9de33-1116-4c79-ae40-c3cb4c3c9b92",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -669,6 +571,17 @@
                     "interactions": "",
                     "processors": "StickDeadzone",
                     "groups": "Gamepad;Xbox Controller",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36a0019a-378b-45c1-a287-d2c882d8046b",
+                    "path": "<DualShockGamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "Gamepad;PS4 Controller",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -708,6 +621,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b8b2140f-fbb3-4a69-8603-709613fb6a76",
+                    "path": "<DualShockGamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "Gamepad;PS4 Controller",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f0f0594c-7519-41a1-bc1c-f752cbb9ecd0",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -735,6 +659,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Xbox Controller",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a6643a1-858e-4f83-a20a-d0f1ead45ede",
+                    "path": "<DualShockGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4 Controller;Gamepad",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -774,6 +709,17 @@
                 },
                 {
                     "name": "",
+                    "id": "2b5398ac-9d97-4dfb-8896-4cc003729c3e",
+                    "path": "<DualShockGamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;PS4 Controller",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e98589dd-ef6b-4dc4-8d30-7b06618b9dba",
                     "path": "<Gamepad>/leftStickPress",
                     "interactions": "",
@@ -801,6 +747,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Xbox Controller",
+                    "action": "StartRecord",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2716963-d8b9-4b22-8f38-8473cc82bb46",
+                    "path": "<DualShockGamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;PS4 Controller",
                     "action": "StartRecord",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -840,6 +797,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ab1fe2bb-8e10-437a-9e80-286888977387",
+                    "path": "<DualShockGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4 Controller;Gamepad",
+                    "action": "CancelRecord",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4da14d76-f427-4aa7-a483-d6f1f125fce0",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
@@ -873,67 +841,12 @@
                 },
                 {
                     "name": "",
-                    "id": "69cc89d8-4c76-4fe9-afc9-fb90933d02ad",
-                    "path": "<Gamepad>/start",
+                    "id": "72b28877-8aad-4ee3-bf15-22b2cdd05383",
+                    "path": "<DualShockGamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "InputDeviceChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d29ccc2e-0bf4-4bad-b194-a8734488ae14",
-                    "path": "<SwitchProControllerHID>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "InputDeviceChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "259ebb4d-1309-40c9-aac0-0807919e61d8",
-                    "path": "<XInputController>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad;Xbox Controller",
-                    "action": "InputDeviceChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2db68b21-0be4-419f-8a21-7b3127da2ee0",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ActionMapChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "49fac06e-6d01-4c44-9718-fa3caa91e79f",
-                    "path": "<SwitchProControllerHID>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ActionMapChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "68cd7ca9-38f4-4b98-bce1-0e8fb3e2b9bb",
-                    "path": "<XInputController>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad;Xbox Controller",
-                    "action": "ActionMapChange",
+                    "groups": "PS4 Controller;Gamepad",
+                    "action": "RetryWithLastRecording",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -941,12 +854,12 @@
         },
         {
             "name": "CloneController_Inv",
-            "id": "14b9c728-1b9e-4199-a099-d94f8da5dd1e",
+            "id": "a2c28d53-08c3-41ab-91ad-ba8e463b8f8b",
             "actions": [
                 {
                     "name": "RetryWithLastRecording",
                     "type": "Button",
-                    "id": "4d6f3556-b734-4995-9738-1ae99c92f3be",
+                    "id": "976fe411-a17e-49b3-aaaa-18a7e92ba5a2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -955,7 +868,7 @@
                 {
                     "name": "CancelRecord",
                     "type": "Button",
-                    "id": "a40cdc04-2b05-4752-9daf-5d2d9826aeb9",
+                    "id": "ae07b206-8986-4e4b-9197-05565a817ab2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -964,7 +877,7 @@
                 {
                     "name": "StartRecord",
                     "type": "Button",
-                    "id": "ee2f6ab0-03e0-4243-916f-4e9d8f253fb7",
+                    "id": "c68651a2-5e09-451f-8733-a4a354eda922",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -973,7 +886,7 @@
                 {
                     "name": "Sprint",
                     "type": "PassThrough",
-                    "id": "c6b92563-13c9-4c13-8e27-e3cae6c159b1",
+                    "id": "7db6b796-8907-48aa-9d0d-da1b00140885",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -982,7 +895,7 @@
                 {
                     "name": "Jump",
                     "type": "Button",
-                    "id": "926fcab0-cafc-47b4-a034-892aa5ddb313",
+                    "id": "46d1ffdb-a1b4-41c2-9205-61a11558a5cb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -991,7 +904,7 @@
                 {
                     "name": "Look",
                     "type": "Value",
-                    "id": "731b1f49-f1fc-42ea-b819-88e93a74a56c",
+                    "id": "4802c5ec-4f59-4b36-8e07-ed8b2a5e9eea",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -1000,35 +913,17 @@
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "a317a38a-2d98-46eb-89bf-ebca3ef97887",
+                    "id": "97fc085a-ff4e-4321-bea9-4eca2843462d",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "InputDeviceChange",
-                    "type": "Button",
-                    "id": "22080464-ed1f-435e-aa26-5eb45279e6d1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ActionMapChange",
-                    "type": "Button",
-                    "id": "6874d859-c2ce-4eef-9f63-952c300c5965",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "8e9cec4a-2be3-44db-916f-90bb6fa6856e",
+                    "id": "e794d533-3e97-4c31-8f16-ccc505b60117",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "StickDeadzone",
@@ -1039,7 +934,7 @@
                 },
                 {
                     "name": "",
-                    "id": "de1fe9da-20e1-4840-b69e-bd2948a9202d",
+                    "id": "89c414be-127a-4962-b70d-c8a9a59628c2",
                     "path": "<SwitchProControllerHID>/leftStick",
                     "interactions": "",
                     "processors": "StickDeadzone",
@@ -1050,7 +945,7 @@
                 },
                 {
                     "name": "",
-                    "id": "3f8eac3e-4d7d-4b7e-83c5-a94864fba093",
+                    "id": "88adf243-d710-4d4f-9f2d-7b94a3de1701",
                     "path": "<XInputController>/leftStick",
                     "interactions": "",
                     "processors": "StickDeadzone",
@@ -1061,10 +956,21 @@
                 },
                 {
                     "name": "",
-                    "id": "68bb913a-6aeb-438a-93cd-e7fde5a6c251",
+                    "id": "5bfc1552-2b5a-4b06-b51f-a831e801f2bb",
+                    "path": "<DualShockGamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "Gamepad;PS4 Controller",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d879df7b-238c-4951-ad3c-909d652dde0a",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "InvertVector2,StickDeadzone",
+                    "processors": "StickDeadzone",
                     "groups": "Gamepad",
                     "action": "Look",
                     "isComposite": false,
@@ -1072,10 +978,10 @@
                 },
                 {
                     "name": "",
-                    "id": "4e981d81-a54a-46bc-b3cb-0a1249b23b2f",
+                    "id": "47f86574-8db2-4cbf-9164-877e33b250a1",
                     "path": "<SwitchProControllerHID>/rightStick",
                     "interactions": "",
-                    "processors": "InvertVector2,StickDeadzone",
+                    "processors": "StickDeadzone",
                     "groups": "Gamepad",
                     "action": "Look",
                     "isComposite": false,
@@ -1083,10 +989,10 @@
                 },
                 {
                     "name": "",
-                    "id": "2b3a7f13-343b-40eb-9b70-026fb9754c1b",
+                    "id": "aeba893d-586f-4ac4-8c75-7609e302bfa6",
                     "path": "<XInputController>/rightStick",
                     "interactions": "",
-                    "processors": "InvertVector2,StickDeadzone",
+                    "processors": "StickDeadzone",
                     "groups": "Gamepad;Xbox Controller",
                     "action": "Look",
                     "isComposite": false,
@@ -1094,7 +1000,18 @@
                 },
                 {
                     "name": "",
-                    "id": "80591f0f-d7cb-47c4-9f9c-8cabb9e3d5b5",
+                    "id": "47c640c9-e2dc-49cf-bf54-b3b9334a4771",
+                    "path": "<DualShockGamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "Gamepad;PS4 Controller",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "275e1267-ae22-41dd-8385-d24216573622",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
@@ -1105,7 +1022,7 @@
                 },
                 {
                     "name": "",
-                    "id": "7c76ce76-65a1-4f81-b476-a9df5de5f4b5",
+                    "id": "eccc6eca-6d71-4e10-818d-d89cd599e125",
                     "path": "<SwitchProControllerHID>/buttonSouth",
                     "interactions": "",
                     "processors": "",
@@ -1116,7 +1033,7 @@
                 },
                 {
                     "name": "",
-                    "id": "2591dd68-5e78-487f-8a92-fe62206282e2",
+                    "id": "03094b61-d633-4c25-83c0-e01f0f00bdc0",
                     "path": "<XInputController>/buttonSouth",
                     "interactions": "",
                     "processors": "",
@@ -1127,7 +1044,18 @@
                 },
                 {
                     "name": "",
-                    "id": "3f4cab17-a830-442e-8156-f59bd1238206",
+                    "id": "17b2396f-1734-48d1-87df-64766207e4e0",
+                    "path": "<DualShockGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4 Controller;Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb09c74b-396d-421b-b0c8-88fb6ac07eb7",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
@@ -1138,7 +1066,7 @@
                 },
                 {
                     "name": "",
-                    "id": "0d6f93f9-4772-4025-bf67-a2908027a1cd",
+                    "id": "ba81de81-5d70-48fa-856a-986618049741",
                     "path": "<SwitchProControllerHID>/leftTrigger",
                     "interactions": "",
                     "processors": "",
@@ -1149,7 +1077,7 @@
                 },
                 {
                     "name": "",
-                    "id": "c73e96ac-c0a4-4faa-a28a-aaad7c863389",
+                    "id": "94d49123-6551-497e-8c21-7651ddb457d6",
                     "path": "<XInputController>/leftShoulder",
                     "interactions": "",
                     "processors": "",
@@ -1160,7 +1088,18 @@
                 },
                 {
                     "name": "",
-                    "id": "8aa1169c-979c-48e1-a55f-048310ebc40e",
+                    "id": "267d8905-fea2-4e59-bb2f-a117c17de760",
+                    "path": "<DualShockGamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;PS4 Controller",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd4a75a7-628c-4c83-9836-8d26f8d16760",
                     "path": "<Gamepad>/leftStickPress",
                     "interactions": "",
                     "processors": "",
@@ -1171,7 +1110,7 @@
                 },
                 {
                     "name": "",
-                    "id": "0e66acbc-52f8-455a-9363-fc9507d123bb",
+                    "id": "700ff55c-3d9f-4b77-ba28-4e212355c0ae",
                     "path": "<SwitchProControllerHID>/leftStickPress",
                     "interactions": "",
                     "processors": "",
@@ -1182,7 +1121,7 @@
                 },
                 {
                     "name": "",
-                    "id": "1a6fea77-3881-4c73-a77b-3596ff19249a",
+                    "id": "dd4619da-f209-41ee-a59e-3ed13bef4a80",
                     "path": "<XInputController>/leftStickPress",
                     "interactions": "",
                     "processors": "",
@@ -1193,7 +1132,18 @@
                 },
                 {
                     "name": "",
-                    "id": "6393d72e-ff26-4b92-86c1-f4a2fd154672",
+                    "id": "769925c3-00f7-4a97-8cd5-c55a55aeff09",
+                    "path": "<DualShockGamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;PS4 Controller",
+                    "action": "StartRecord",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "620c6cc0-8e4c-43d4-9d74-d3c09ec4ea7d",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
@@ -1204,7 +1154,7 @@
                 },
                 {
                     "name": "",
-                    "id": "e4d0f250-6185-4cb1-91b1-6de8c7e440cb",
+                    "id": "e0810b0c-72a7-4a75-85c6-744377560a08",
                     "path": "<SwitchProControllerHID>/buttonNorth",
                     "interactions": "",
                     "processors": "",
@@ -1215,7 +1165,7 @@
                 },
                 {
                     "name": "",
-                    "id": "b21af506-c561-46bb-b16d-6f567f18f2e0",
+                    "id": "83cbed54-141f-47c4-bdca-9acd6c8176f9",
                     "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
@@ -1226,7 +1176,18 @@
                 },
                 {
                     "name": "",
-                    "id": "7a9089b3-93e3-4a5f-af0a-6f55558c2d80",
+                    "id": "fdb0315b-805a-4542-b3ac-941b4086a906",
+                    "path": "<DualShockGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4 Controller;Gamepad",
+                    "action": "CancelRecord",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "044cf711-9744-429b-9b5a-daf9e16ad278",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
@@ -1237,7 +1198,7 @@
                 },
                 {
                     "name": "",
-                    "id": "8c714e3e-0de9-42ab-9866-3d8dfd0f7f3e",
+                    "id": "04cf91b4-3473-40ee-966f-4fafa32f9b45",
                     "path": "<SwitchProControllerHID>/rightShoulder",
                     "interactions": "",
                     "processors": "",
@@ -1248,7 +1209,7 @@
                 },
                 {
                     "name": "",
-                    "id": "41c58c1c-89f5-4fda-9caf-5991a29801fa",
+                    "id": "9b54dd3d-3d34-4f44-b786-f490e124c875",
                     "path": "<XInputController>/rightShoulder",
                     "interactions": "",
                     "processors": "",
@@ -1259,23 +1220,12 @@
                 },
                 {
                     "name": "",
-                    "id": "05ff5fe9-ae6c-4cd9-a545-470ac17c7071",
-                    "path": "<Keyboard>/slash",
+                    "id": "25fab50c-e7be-419e-8b36-5f99677eaf8a",
+                    "path": "<DualShockGamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad;Xbox Controller",
-                    "action": "InputDeviceChange",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a159bbe1-6280-45b5-880f-4c144073b022",
-                    "path": "<Keyboard>/period",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad;Xbox Controller",
-                    "action": "ActionMapChange",
+                    "groups": "PS4 Controller;Gamepad",
+                    "action": "RetryWithLastRecording",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
